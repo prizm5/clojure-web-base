@@ -1,0 +1,10 @@
+{
+  "name": "Reference Data",
+  "url": "refdata",
+  "routes": [{
+    "name": "Countries",
+    "path": "countries",
+    "template": "countries.html",
+    "resolveService": "CountriesService"
+  }]
+}

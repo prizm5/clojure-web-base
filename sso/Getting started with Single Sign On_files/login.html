@@ -1,0 +1,633 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0351)https://www-947.ibm.com/account/userservices/jsp/login.jsp?persistPage=true&page=/FIM/sps/IBM_WWW_SAML20_EXTERNAL/saml20/logininitial%3FRequestBinding%3DHTTPPost%26ResponseBinding%3DHTTPPost%26NameIdFormat%3DEmail%26PartnerId%3Dhttps%3A//idaas.ng.bluemix.net/sps/saml20sp/saml20&PD-REFERER=https://idaas.ng.bluemix.net/idaas/public/tamlogin.jsp&error= -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US" class="dj_webkit dj_chrome dj_contentbox"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/">
+	<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico">
+	<meta name="DC.Rights" content="? Copyright IBM Corp. 2011">
+	<meta name="Keywords" content="Sign in page V17">
+	<meta name="DC.Date" scheme="iso8601" content="2011-07-05">
+	<meta name="Source" content="v17 Template Generator, Template 17.02">
+	<meta name="Security" content="Public">
+	<meta name="Abstract" content="SSO Sign-in Template refresh">
+	<meta name="IBM.Effective" scheme="W3CDTF" content="2011-08-05">
+	<meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="IBM_SubjectTaxonomy">
+	<meta name="Owner" content="REPLACE_ME@us.ibm.com">
+	<meta name="DC.Language" scheme="rfc1766" content="en-US">
+	<meta name="IBM.Country" content="US">
+	<meta name="Robots" content="index,follow">
+	<meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT101IBM_SubjectTaxonomy">
+	<meta name="Description" content="SSO Sign-in Template refresh">
+	<meta http-equiv="PICS-Label" content="(PICS-1.1 &quot;http://www.icra.org/ratingsv02.html&quot; l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) &quot;http://www.rsac.org/ratingsv01.html&quot; l gen true r (n 0 s 0 v 0 l 0) &quot;http://www.classify.org/safesurf/&quot; l gen true r (SS~~000 1))">
+	<title>IBM Registration</title>
+	
+	<link href="www.css" rel="stylesheet" title="www" type="text/css">
+	
+	<script src="www.js" type="text/javascript"></script><script type="text/javascript" src="eluminate(1).js"></script><script src="head.js"></script><script language="javascript" type="text/javascript" src="50200000.js"></script><script language="javascript" type="text/javascript" src="rules_50200000.js"></script><script language="javascript" type="text/javascript" src="dispatcher-v3.js"></script><script src="yahoo-min.js" type="text/javascript"></script><script src="cp-v3.js" type="text/javascript"></script><script src="json-min.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">
+	
+	// COMMENTED BY ANAND 0;
+		//ibmweb.config.set({
+		//signin:{enabled: false},
+		//greeting:{enabled: false},
+		//localeselector:{enabled: false},
+		//sbs:{enabled: false,
+			//	email: false,
+			//	print: false
+		//}
+		// });
+		// END OF COMMENTED BY ANAND
+		//ADDED BY ANAND
+		
+			ibmweb.config.set({
+				signin : {
+					enabled : false
+				},
+				greeting : {
+					enabled : false
+				},
+				localeselector : {
+					enabled : false
+				},
+				sbs : {
+					enabled : false,
+					email : false,
+					print : false
+				},
+
+				appmast : {
+					enabled : true
+				}
+			});
+			//END OF ADDED BY ANAND
+		
+		function startpage(){
+			document.getElementById('username').focus();	
+		}
+
+function disableEnterKey(e)
+{
+     var key;
+
+     if(window.event)
+          key = window.event.keyCode;     //IE
+     else
+          key = e.which;     //firefox
+
+     if(key == 13){
+			document.getElementById('login').submit();
+          return false;
+	}
+     else
+          return true;
+}
+</script>
+
+
+	
+	
+
+	
+	
+	
+
+<script type="text/javascript"> 
+dojo.require("dojo.io.script");
+</script>
+<script type="text/javascript"> 
+
+function fieldData(data){
+			         
+   if(data.response.status == 'success'){
+    if(!data.response.message || dojo.string.trim(data.response.message).length == 0)
+    {
+    dojo.empty("side-menu");
+    }
+    else{
+       
+       var out = '';
+		out += data.response.message;
+		out += '<br/><br/>';
+		dojo.byId("side-menu").innerHTML=out;
+    }
+   			
+   }else{
+		dojo.empty("side-menu");
+   }
+			 
+}
+
+dojo.addOnLoad(function(){ 
+  dojo.ready(function() {
+         
+		 if(dojo.cookie("Inst_Profile_Config")){		
+		 	 var instProfileCfg = dojo.cookie("Inst_Profile_Config");
+   			 var instProfileCfgObj = dojo.fromJson(instProfileCfg);
+             
+             if(instProfileCfgObj.contxt_msg_servc_url){
+             
+             	dojo.io.script.get({
+					url: instProfileCfgObj.contxt_msg_servc_url
+					});
+             }
+		 }else{
+			  dojo.empty("side-menu");
+		 }
+
+if (dojo.isIE <= 9) {
+						var watermarkUsername = 'IBM id (user@company.com)';
+
+						
+						var userName = dojo.query('#username');
+						userName.val(watermarkUsername).addClass('watermark');
+
+						
+						userName.connect("onblur", function(evt) {
+							if (userName.val().length == 0) {
+								userName.val(watermarkUsername).addClass('watermark');
+							}
+						});
+
+						
+						userName.connect("onfocus", function(evt) {
+							if (userName.val() == watermarkUsername) {
+								userName.val('').removeClass('watermark');
+							}
+						});
+						var watermarkPassword = 'Password';
+
+						
+						var password = dojo.query('#password');
+						password.val(watermarkPassword).addClass('watermark');
+
+						
+						password.connect("onblur", function(evt) {
+							if (password.val().length == 0) {
+								password.val(watermarkPassword).addClass('watermark');
+							}
+						});
+
+						
+						password.connect("onfocus", function(evt) {
+							if (password.val() == watermarkPassword) {
+								password.val('').removeClass('watermark');
+							}
+						});
+					}
+		 
+		 
+		 	
+    });		 
+ });
+ 
+
+</script> 
+
+	
+<script type="text/javascript">
+
+ 
+ 
+	var formInUse = false;
+	function setFocus()
+	{
+	 if(!formInUse) {
+	  document.ssoform.username.focus;
+	 }
+	}
+	
+</script>
+ 			
+
+
+	
+		<style>
+			/* Rajaneesh : new css */
+			
+			a:hover, a:visited, a:link, a:active
+			{
+    			text-decoration: none;
+			}
+			#login p span {
+				margin-left: 0px;
+			}
+
+			#login .ibm-btn-sec {
+				padding: 7px 3px;
+			}
+			#login p.ibm-button-link-alternate a {
+				padding: 5px 0px;
+				font-family: arial;
+			}
+
+			#ibmEmplyoess > li {
+				background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+				padding: 2px 0 !important;
+			}
+
+			div, p, span, a, li, strong {
+				font-family: arial, Helvetica;
+			}
+
+			.ibm-landing-page #ibm-leadspace-head {
+				background: none;
+				border: none;
+			}
+
+			#ibm-content .ibm-container {
+				border: none;
+			}
+
+			.dj_ie8 p.ibm-button-link-alternate a {
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+			}
+			
+			.dj_ie8 .ibm-application #ibm-masthead .ibm-menu-subtabs{
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+			}
+			
+			:root .ibm-application #ibm-masthead .ibm-menu-subtabs {
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+			}
+
+			/* ie9 double background fix */
+			:root p.ibm-button-link-alternate a {
+				filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+			}
+			input.watermark {
+				color: #999;
+			}
+			input.ibm-cancel-btnser{
+				font-family:Arial, Helvetica;
+				background:#DBDBDB;
+				filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#F5F5F5', endColorstr='#DBDBDB');
+				background:-webkit-linear-gradient(top, #F5F5F5, #DBDBDB);
+				background:-moz-linear-gradient(top, #F5F5F5, #DBDBDB);
+				background:-o-linear-gradient(top, #F5F5F5, #DBDBDB);
+				background:-ms-linear-gradient(top, #F5F5F5, #DBDBDB);
+				background:linear-gradient(top, #F5F5F5, #DBDBDB);
+				border:1px solid #DBDBDB;color:#000;
+				padding:7px 20px;
+				margin-bottom:20px;
+				-webkit-border-radius:5px;
+				-moz-border-radius:5px;
+				border-radius:5px;
+				-moz-box-shadow:0px 2px 3px rgba(0,0,0,.4);
+				-webkit-box-shadow:0px 2px 3px rgba(0,0,0,.4);
+				box-shadow:0px 2px 3px rgba(0,0,0,.4);
+				text-shadow:#FFF 0 1px 0;
+				min-width:102px;
+				min-width:90px\9;
+				*min-width:auto;
+				text-align:center;
+				cursor:pointer;
+			}
+			
+		</style>
+
+
+
+	<script type="text/javascript" src="usen-utf8.js" id="dojoIoScript1" charset="utf-8"></script><script type="text/javascript" src="saved_resource" id="dojoIoScript2" charset="utf-8"></script><script type="text/javascript" src="profiling.js" id="dojoIoScript3" charset="utf-8"></script><script type="text/javascript" src="mmcore.js"></script><script type="text/javascript" src="blackwhite_lists.json" id="dojoIoScript4" charset="utf-8"></script><script id="mmcore.1" src="saved_resource(1)" type="text/javascript" charset="utf-8"></script></head>
+	<body id="ibm-com" onload="startpage()" class="v17" aria-busy="false">
+	<div id="ibm-top" class="ibm-landing-page ibm-application"><img src="ibm_logo_print.png" width="43" height="15" id="ibm-print-masthead" alt="IBM Print">
+<!-- MASTHEAD_BEGIN -->
+
+<div id="ibm-masthead" role="banner">
+  <div id="ibm-universal-nav" role="navigation" aria-label="Site map">
+    <ul id="ibm-unav-links">
+      <li id="ibm-home"> <a href="http://www.ibm.com/us/en/" tabindex="0">IBM®</a><ul class="ibm-logo-subnav"><li class="ibm-first"><a href="http://www.ibm.com/solutions/us/en/?lnk=mso-0-usen">Industries &amp; solutions</a></li><li class=""><a href="http://www.ibm.com/technologyservices/us/en/?lnk=mse-0-usen">Services</a></li><li class=""><a href="http://www.ibm.com/products/us/en/?lnk=mpr-0-usen">Products</a></li><li class=""><a href="http://www.ibm.com/support/us/en/?lnk=msd-0-usen">Support &amp; downloads</a></li><li class="ibm-last"><a href="http://www.ibm.com/account/us/en/?lnk=mmi-0-usen">My IBM</a></li></ul></li>
+    </ul>
+    <div class="ibm-masthead-tools">
+      <div id="ibm-mast-options">
+  		<ul role="toolbar" aria-label="Masthead Navigation">
+		  <li id="ibm-geo" role="presentation"><a href="http://www.ibm.com/planetwide/select/selector.html" role="button" aria-label="Choose location United States currently selected" tabindex="0">United States</a></li><li id="ibm-sso" role="presentation"><span dojoattachpoint="containerNode" widgetid="ibmweb_dynnav_greeting_0">
+	<p dojoattachpoint="welcomeMessageNode"></p>
+	<span dojoattachpoint="bNode" style="display: none"> <span class="ibm-greeting-hasp">[</span> <span dojoattachpoint="linksNode"></span> <span class="ibm-greeting-hasp">]</span> </span>
+</span></li>
+		</ul>
+	</div>
+      <div id="ibm-search-module" role="search" aria-label="IBM Search">
+	  </div>
+	</div>
+  </div>
+  <div class="ibm-menu-subtabs" style="background: #ffffff;border: none;">
+        
+        
+  </div>
+  
+</div>
+
+
+	<div id="ibm-pcon"><!-- CONTENT_BEGIN -->
+	<div id="ibm-content">
+	<div id="ibm-content-body">
+	<div id="ibm-content-main" role="main">
+	
+
+	<form name="ssoform" id="login" action="https://www-947.ibm.com/pkmslogin.form" class="ibm-column-form ibm-styled-form" enctype="application/x-www-form-urlencoded" method="post">
+	<input type="hidden" name="login-form-type" value="pwd" role="form">
+	
+
+	<!-- CONTENT_BODY -->
+<!-- 6-4 6-2 grid -->
+	
+	<!-- CHANGED BY ANAND -->
+	<div class="ibm-columns">
+	<div class="ibm-col-6-6"><img alt="" src="ibm_id_logo-personimage54x54.png" style="float: left;">&nbsp;<span style="font-size: 40px;">IBM id </span></div>	</div>	
+	<div class="ibm-columns">
+	<div class="ibm-col-6-4">
+	
+	<div class="ibm-columns" style="min-height: 350px">
+					<div class="ibm-col-6-2">
+												<h2 style="font-size: 18px;">One key, many possibilities.</h2>
+												<br>
+												
+												<p><span style="font-size: 13px; color: black; width: 250px; line-height:100%"> Your IBM id provides access to services, communities, support, online purchasing, and much more.</span></p>
+													<br> <br><br>
+													
+												<p class="ibm-button-link-alternate" style="position: relative; top: 3px;">
+													<input value="Create IBM id" type="button" class="ibm-btn-cancel-sec" onclick="javascipt:registerLinkBuilder()">
+												</p>
+												</div>
+											<div class="ibm-col-6-2">
+												<h2 style="margin-bottom: 11px;font-size: 18px;">Sign in</h2>
+												<br>
+																						
+		
+												<p>
+
+													<span>
+<!-- 														<input name="username" id="username" size="30" value="" type="text" placeholder="IBM id/ email"> -->
+														<input name="username" id="username" type="text" size="30" maxlength="80" value="" onkeypress="return disableEnterKey(event)" placeholder="IBM id (user@company.com)">
+													</span>
+												</p>
+												<p>
+
+													<span>
+<!-- 														<input name="password" id="password" size="30" value="" type="password" placeholder="password"> -->
+														<input name="password" id="password" type="password" size="30" value="" onkeypress="return disableEnterKey(event)" placeholder="Password">
+													</span>
+												</p>
+		
+												<div id="forgotpwd">
+												<a href="https://www.ibm.com/account/profile?page=forgot&okurl=www-947.ibm.com%2FFIM%2Fsps%2FIBM_WWW_SAML20_EXTERNAL%2Fsaml20%2Flogininitial%3FRequestBinding%3DHTTPPost%26ResponseBinding%3DHTTPPost%26NameIdFormat%3DEmail%26PartnerId%3Dhttps%3A%2F%2Fidaas.ng.bluemix.net%2Fsps%2Fsaml20sp%2Fsaml20&failurl=https%3A%2F%2Fidaas.ng.bluemix.net%2Fidaas%2Fpublic%2Ftamlogin.jsp&cancelurl=https%3A%2F%2Fidaas.ng.bluemix.net%2Fidaas%2Fpublic%2Ftamlogin.jsp" style="font-size:13px;background: none repeat scroll 0% 0% transparent; color: rgb(35, 97, 135); text-shadow: 0px 0px; padding: 0px; font-weight: normal; box-shadow: none; border: medium none;">Forgot password?</a>
+												</div>	
+													<br>
+													<div class="ibm-columns" id="goToLinksVisible">
+													</div>
+											<p class="ibm-button-link-alternate">
+													
+													<a href="https://www-947.ibm.com/account/userservices/jsp/login.jsp?persistPage=true&page=/FIM/sps/IBM_WWW_SAML20_EXTERNAL/saml20/logininitial%3FRequestBinding%3DHTTPPost%26ResponseBinding%3DHTTPPost%26NameIdFormat%3DEmail%26PartnerId%3Dhttps%3A//idaas.ng.bluemix.net/sps/saml20sp/saml20&PD-REFERER=https://idaas.ng.bluemix.net/idaas/public/tamlogin.jsp&error=#" onclick="document.getElementById(&#39;login&#39;).submit();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sign in&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+													
+													&nbsp;
+													
+													<input style="visibility:hidden" class="ibm-cancel-btnser" id="ibm-cancel" name="ibm-cancel" type="button" value="Cancel" onclick="javascript:cancelcommand()">
+													
+<!-- 													<a href="#" style="background: none repeat scroll 0% 0% transparent; color: #236187; border: 1px solid gray; text-shadow: 0px 0px; padding: 5px; font-weight: normal;">Forgot Password?</a> -->
+												</p>
+												
+
+											</div>
+											
+										</div>
+	
+	</div>		
+
+	<div class="ibm-col-6-2">
+	
+
+ 	
+	
+ 	
+ 	<div class="ibm-columns"> 
+						<div class="ibm-col-6-2"> 
+							&nbsp; 
+ 						</div> 
+ 					</div> 
+ 					<div class="ibm-columns"> 
+ 						<div class="ibm-col-6-2"> 
+ 						  <div id="side-menu"></div> 
+ 						<a href="https://www.ibm.com/account/profile?page=faqhelp">Help and FAQ</a>
+<!--  							<a href="#">Help & FAQ</a>  -->
+ 							<br> 
+ 							<br> 
+<!--  							<span>IBM Employees:</span>  -->
+							
+ 							 
+ 							
+ 							<ul id="ibmEmplyoess"> 
+ 								<li> 
+<!--  									<a href="#">Sign with your intranet ID new</a>  -->
+ 									
+ 								</li> 
+<!--  								<li>  -->
+ 								
+<!--  									<a href="#">Link your intranet id and IBM</a>  -->
+<!--  								</li>  -->
+ 							</ul> 
+ 						</div> 
+ 					</div> 
+ 	 
+	
+ 	</div> 
+ 	</div> 
+	
+	
+	
+
+	
+	<!--END OF ADDED BY ANAND-->
+	
+	<!-- 6-4 6-2 grid -->
+	
+	</form>
+	
+	
+
+	</div>
+
+	<!-- CONTENT_BODY_END --></div>
+	
+
+
+	<!-- CONTENT_END --></div>
+
+
+
+	
+	<script type="text/javascript">
+	
+	
+
+
+
+		if(dojo.cookie("Inst_Profile_Config")){ 
+   
+   if(document.getElementById('ibm-cancel')){
+   	document.getElementById('ibm-cancel').style.visibility="visible";
+   	}
+   
+   var instProfileConfig = dojo.cookie("Inst_Profile_Config");
+
+   var instProfileConfigObject = dojo.fromJson(instProfileConfig);
+   
+   if(instProfileConfigObject.originating_url && instProfileConfigObject.originating_url == 'ipback'){
+	        		document.getElementById('forgotpwd').innerHTML = '<a href="https://idaas.ng.bluemix.net/idaas/public/tamlogin.jsp?sso_evt=2" style="font-size:13px;background: none repeat scroll 0% 0% transparent; color: rgb(35, 97, 135); text-shadow: 0px 0px; padding: 0px; font-weight: normal; box-shadow: none; border: medium none;">Forgot password?</a>';
+  	}
+   //render quicklinks if from masthead
+   if(instProfileConfigObject.masthead_origin=='true'){
+   
+	ibmweb.data.settings = {
+	'url':	'http://ecmpreview.webmaster.ibm.com/common/translations/quicklinks/us/en/utf8.js',
+	'cc': null,
+	'lc': null,
+	'enc': null
+	
+	};
+   
+   ibmweb.data.require('QUICKLINK', function(trans) {
+ 	var goToLinks = trans.QUICKLINK.quickLink;
+	
+    if(!goToLinks || goToLinks.length == 0 || (goToLinks.length == 1 && goToLinks[0].link == '#' && goToLinks[0].link != "EAName#" )) {
+	 dojo.empty("goToLinksVisible");
+	
+	}else {
+		var output = '<br/><div class="ibm-col-6-2"><div id="navLinks"></div><br/>';
+		
+		 if(dojo.byId("goToLinksVisible")!=null) {
+		      
+		    dojo.byId("goToLinksVisible").innerHTML=output;
+		  
+		
+			dojo.require("dijit.form.Select");
+			dojo.require("dojo.data.ItemFileReadStore");
+			dojo.ready(function(){
+				var goToLinksObj = [];
+			    for (var i = 0; i < goToLinks.length; i++) {
+			        if(goToLinks[i].name=="EAName#"){
+			        	goToLinksObj.push({"value": instProfileConfigObject.ea[0].ea_link ,"name": instProfileConfigObject.ea[0].ea_name });
+			        	
+			        }else{
+			        	goToLinksObj.push({"value": goToLinks[i].link ,"name": goToLinks[i].name });
+			        	
+			        }
+			    }
+	
+	  			var linkStore = new dojo.data.ItemFileReadStore({data: { 
+	  				identifier: "value",
+	  				label : "name",
+	 				items: 	goToLinksObj  
+				}});
+			
+				var select = new dijit.form.Select({
+						name: "navLinks",
+						store: linkStore,
+						maxHeight: -1,
+						sortByLabel: false,
+						style: {width: '214px'},
+					}, "navLinks");
+					select.startup();
+				});
+	
+			   }
+		   
+		}
+	}
+	);
+   
+   
+   }
+   
+  }
+ 
+	
+    var myButtonObject = {
+        onClick: function(evt){
+            evt.stopPropagation();
+			if(evt.target.className=="ibm-btn-arrow-pri"){
+			  if(dijit.byId('navLinks')){
+			   if( dijit.byId('navLinks').attr('value')!='#'){
+			  
+					dojo.cookie("PD-SGNPAGE",dijit.byId('navLinks').attr('value'),{
+								path:"/",
+								domain:".ibm.com"
+					});
+				}
+			  }
+	       	}
+		}
+    };
+	
+    dojo.connect(dojo.byId('ibm-submit'), "onclick", myButtonObject, "onClick");
+    
+    function cancelcommand(){
+    	var instProfileCfg = dojo.cookie("Inst_Profile_Config");
+   		var instProfileConfigObj =  dojo.fromJson(instProfileCfg);
+        if(instProfileConfigObj.originating_url && instProfileConfigObj.originating_url == 'ipback'){
+        	ssoform.action="https://idaas.ng.bluemix.net/idaas/public/tamlogin.jsp?sso_evt=3"; 
+        	ssoform.submit();
+        }
+        else{
+        	
+        	ssoform.action="https://idaas.ng.bluemix.net/idaas/public/tamlogin.jsp"; 
+        	ssoform.submit();
+        }
+    }
+    
+  function registerLinkBuilder(){
+  	var flag = true; 
+    
+    var Inst_Profile_Originating_Url = "cplight=https://www.ibm.com/account/profile/en_US?page=reg&template=lightperson";
+  	if(dojo.cookie("Inst_Profile_Config")){ 
+   
+   		var instProfileCfg = dojo.cookie("Inst_Profile_Config");
+   		var instProfileConfigObj =  dojo.fromJson(instProfileCfg);
+         		
+        if(instProfileConfigObj.originating_url && dojo.string.trim(instProfileConfigObj.originating_url).length > 0){
+                
+	           	instProfileConfigObj.invoke_register = "true";
+	           	
+	           	var newInstProfileCfg = dojo.toJson(instProfileConfigObj);
+	           	dojo.cookie("Inst_Profile_Config",newInstProfileCfg,{
+									path:"/",
+									domain:".ibm.com"
+				});
+	        
+	     	if(instProfileConfigObj.originating_url == 'ipback'){
+	        	
+	        		window.location.href = "https://idaas.ng.bluemix.net/idaas/public/tamlogin.jsp?sso_evt=1";
+	        	
+	        	flag = false;
+	        }
+	        
+	       	if(Inst_Profile_Originating_Url.indexOf(instProfileConfigObj.originating_url) == 0){
+	       		Inst_Profile_Originating_Url = Inst_Profile_Originating_Url.replace(instProfileConfigObj.originating_url+'=','');
+	       		window.location.href = Inst_Profile_Originating_Url;
+	       		flag = false;
+	       	}
+         }
+   }
+   	if(flag)
+   		window.location.href = "https://www.ibm.com/account/profile?page=reg&okurl=www-947.ibm.com%2FFIM%2Fsps%2FIBM_WWW_SAML20_EXTERNAL%2Fsaml20%2Flogininitial%3FRequestBinding%3DHTTPPost%26ResponseBinding%3DHTTPPost%26NameIdFormat%3DEmail%26PartnerId%3Dhttps%3A%2F%2Fidaas.ng.bluemix.net%2Fsps%2Fsaml20sp%2Fsaml20&failurl=https%3A%2F%2Fidaas.ng.bluemix.net%2Fidaas%2Fpublic%2Ftamlogin.jsp&cancelurl=https%3A%2F%2Fidaas.ng.bluemix.net%2Fidaas%2Fpublic%2Ftamlogin.jsp&lang=en_US"; 
+}		
+	</script>
+	</div>
+	<div id="ibm-related-content" aria-label="Related Content"></div>
+	<!-- FOOTER_BEGIN -->
+
+<div id="ibm-footer-module" role="complementary"></div>
+<div id="ibm-footer" role="contentinfo" aria-label="Footer">
+<h2 class="ibm-access">Footer links</h2>
+    <ul><li><a href="http://www.ibm.com/contact/us/en/?lnk=flg-cont-usen">Contact</a></li><li><a href="http://www.ibm.com/privacy/us/en/?lnk=flg-priv-usen">Privacy</a></li><li><a href="http://www.ibm.com/legal/us/en/?lnk=flg-tous-usen">Terms of use</a></li><li><a href="http://www.ibm.com/accessibility/us/en/?lnk=flg-acce-usen">Accessibility</a></li><li><a href="https://www-947.ibm.com/account/userservices/jsp/login.jsp?persistPage=true&page=/FIM/sps/IBM_WWW_SAML20_EXTERNAL/saml20/logininitial%3FRequestBinding%3DHTTPPost%26ResponseBinding%3DHTTPPost%26NameIdFormat%3DEmail%26PartnerId%3Dhttps%3A//idaas.ng.bluemix.net/sps/saml20sp/saml20&PD-REFERER=https://idaas.ng.bluemix.net/idaas/public/tamlogin.jsp&error=#">Cookie Preferences</a></li></ul>
+</div>
+	<!-- FOOTER_END -->
+	<div id="ibm-metrics">
+		<script type="text/javascript" src="stats.js"></script>
+	<a id="icon-id0400031364755705" style="display: none;"><img style="border: none; cursor:pointer;" onerror="truste.eu.showSeal()" alt="TRUSTe Icon" src="get"></a></div>
+	
+	
+	
+
+
+</div><script defer="defer" async="async" src="notice"></script><script type="text/javascript" src="notice(1)"></script></body></html>

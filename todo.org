@@ -1,0 +1,50 @@
+* Couchdb changes
+** what happens when:
+*** first initialize of site with changes already made
+    starts changes by default at '0' which is the starting change
+*** changes happen when site is down
+    saves each change seq written to read db in a bulk update, then starts from that everytime
+*** changes come in from replication while site is down
+    we dont know...
+*** changes come in from replication while site is up
+    we dont know...
+
+* Logging
+  Enabled log4j logging using [[https://github.com/clojure/tools.logging][clojure.tools.logging]]
+  [[http://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html][Log Levels]]
+  
+* Billing
+   New Relic - 150/month-node 
+   Bluemix nodes ~50 -  $100 - 5000
+   New Relic+Bluemix @ $250/month-node * 50 nodes = 12500/month
+   10 members * 15000 agreements * 8 calcs per agreement * 250 days
+
+   Cloudant - 0.015 per 100 - 1m - $200 * 31m/month = 6200/month
+* OAuth2 Tokens
+   [[http://alexbilbie.com/2013/02/a-guide-to-oauth-2-grants/][Guide to OAuth2 Grants]]
+   [[http://aaronparecki.com/articles/2012/07/29/1/oauth2-simplified][Oauth2 simplified]]
+   [[http://alexbilbie.com/2014/11/oauth-and-javascript/][Oauth2 and javascript]]
+** 4.1 authorization code grant
+    [[http://tools.ietf.org/html/rfc6749#section-4.1][Section 4.1]]
+    
+    client redirects to the IdP server, user logs in, user redirected
+    back to client with "auth code", client requests token with auth
+    code
+** 4.2 implicit grant
+    [[http://tools.ietf.org/html/rfc6749#section-4.2][Section 4.2]]
+   
+    Client redirects user to IdP server, user logs in, user is
+    redirected with access token, like for a JS app
+** 4.3 resource owner
+    [[http://tools.ietf.org/html/rfc6749#section-4.3][Section 4.3]]
+    
+    client askes for credentials directly from end user, used for
+    "trusted clients", i.e. not javascript
+** 4.4 client_credentials
+    [[http://tools.ietf.org/html/rfc6749#section-4.4][Section 4.4]]
+    
+    used for app2app auth, only when the client app is secure,
+    i.e. not javascript
+
+
+    

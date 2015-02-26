@@ -1,0 +1,21 @@
+
+
+Authentication
+- token
+  - Profile
+    - Id
+
+Authorization
+- registered?
+  - Y 
+    - map org and load roles
+  - N   
+    - Select org submit for approval
+    - Admin Can approve
+      - Selects roles
+
+Organization
+- Create Orgs
+  - Name
+  - User
+    - Org Contaact Info

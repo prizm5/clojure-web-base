@@ -1,0 +1,27 @@
+{
+  "data": [
+
+    {
+      "record-type": "event",
+      "event": "user-invited",
+      "date": "20141202T171908.272Z",
+      "executor": "admin",
+      "version": 1,
+      "doc": {
+        "email": "admin",
+        "org": "IBM",
+        "version": 1
+      }
+    }, 
+      {"record-type":"event","event":"user-invited","date":"20141202T171908.272Z","executor":"admin","version":1,"doc":{"email":"sashogre@us.ibm.com","org":"IBM","version":1}},
+      {"record-type":"event","event":"user-invited","date":"20141202T171908.272Z","executor":"admin","version":1,"doc":{"email":"jnadelma@us.ibm.com","org":"IBM","version":1}},
+      {"record-type":"event","event":"user-invited","date":"20141202T171908.272Z","executor":"admin","version":1,"doc":{"email":"kdobrien@us.ibm.com","org":"IBM","version":1}},
+      {"record-type":"event","event":"user-invited","date":"20141202T171908.272Z","executor":"admin","version":1,"doc":{"email":"ncreque@us.ibm.com","org":"IBM","version":1}},
+      {"record-type":"event","event":"user-invited","date":"20141202T171908.272Z","executor":"admin","version":1,"doc":{"email":"sstroma@us.ibm.com","org":"IBM","version":1}},
+      {"record-type":"event","event":"user-invited","date":"20141202T171908.272Z","executor":"admin","version":1,"doc":{"email":"adam.ulman@us.ibm.com","org":"IBM","version":1}},
+      {"record-type":"event","event":"user-invited","date":"20141202T171908.272Z","executor":"admin","version":1,"doc":{"email":"jasonang@us.ibm.com","org":"IBM","version":1}},
+      {"record-type":"event","event":"user-invited","date":"20141202T171908.272Z","executor":"admin","version":1,"doc":{"email":"trevor.negus@uk.ibm.com","org":"IBM","version":1}}
+
+  ]
+}
+

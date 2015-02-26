@@ -1,0 +1,91 @@
+Bluemix Assumptions:
+
+What Bluemix Provides:
+- Infrastructure and asset management. Relieves the customer of the need to deal with instance provisioning and management. The customer needs only to build applications using the supported technologies that work with Cloud Foundry and provide simple instace requirements such as memory, and Bluemix automatically creates and manages the requested instances. 
+- Bluemix provides add-on services for policy based scaling, authenication and links to other external services like Cloundant Databases, New Relic Cloud logging and monitoring.
+- Being hosted on softlayer, physical servers are kept running and available. Using a standards based approach, the can build and maintian servers as needed to support usage and growth.
+
+What Does Not Bluemix Provides:
+- Disaster recovery
+- Data managment, backup, recovery, segregation
+
+
+
+1.) Accessibility
+
+	Note: Currently Bluemix does not have true Disaster rocovery that I am aware of. As such, discussions would need to be had to create a plan for multiple location geo hosting and ability to maintain near realtime data replication with location switching in a disaster event.
+
+2.) Please answer from the perspective of what Bluemix provides here.  However can you also answer from the perspective of what hardware you would expect if on premise.  I have to get an idea of the price of on premise hardware to help compare to obfuscating that through bluemix.
+
+	Bluemix has policy based autoscaling of application instances. Cloundant provides cloud scale database services and already has practices in place to manage volume and usage. 
+	
+	Note: Without at least an initial architectural design meeting, we can't give sizing results.
+
+3.) Archiving & Record keeping
+
+	Note: This is an involved and complex system that would be best answered by an IBM export on storage.
+
+8.) Talk about what bluemix allows us to do with rollout
+
+	Bluemix supports continuous Build environments, automated testing, automated code deployment. Using custom traffic routing bound to specific application instances, phased rollouts can be performed allowing for new feature isolation, testing and eventual integration within the pipeline. Bluemix has configuration managemnet services than can be leveraged to build production integration/promotion process and controls.
+
+9.) Operability
+
+	Leveraging the softlayer global footprint, Bluemix instances can be deployed to key lcoactions providing redundancy and availability. Having Clundant as a database backbone affords us versatility and reliability using their efficient data replication. 
+
+*****************************
+
+	- restrict cross-border data transfer , support in site data processing restrictions  for in scope countries
+	Note: This would rquire a complex dta access strategy that implements both infrastructural, application and data specific designs.
+
+	New Relic for logging and metrics tracking. Already includes general process mapping wsith logging. Key metric identification, logging and alerting based on policy/thresholds. Live, ondemand and embedded dashboards and custom reporting.
+
+*****************************
+
+	These would be feautres designed as part of the system and not part of bluemix
+	- The component must support error handling and ensure that errors are appropriately escalated
+	- The component must be able to log manual system access and changes for auditing purposes including date
+		time, nature of change and the instigating user 
+	-The component must be able to record and log all activities for auditing purposes including date, time 
+		nature of change and the instigating user
+
+
+11.) Talk about what Bluemix brings here but also can you talk to things we did in the Public API work for recovering the services.  Ask Max or Boguste to help if needed with this
+
+- The component must be able to rapidly fall back to a previous release
+	Part of manages release/code rollout process
+
+*****************************
+
+- The component must be designed with no single points of failure within a data center and must continue
+processing in the event of a single, isolated failure (with minimal/no manual intervention) with no impact to live service
+
+	- Multiple strategies needed: Cloudant already provides as part of normal operations. 
+	- IBM built services and processes would have redundant instances deployed into bluemix as needed to cover operational risk. (i.e. messages bus, calculation engine, service endpoints)
+
+*****************************
+
+- In a recovery scenario, the component must be capable of recovering to a specific and consistent point in time and then continue processing as normal
+- The component must be available at an alternate site within 20 to 30 minutes of a multiple component or site failure with no impact to data consistency
+- In the event of a full system recovery, the effort required from technical operations to recover should be minimal
+- The component must ensure that there is no loss or corruption of data in the event of a failure scenario
+
+	- In combination with redundancy of process and instances, cloud databases with near real-time data replication would be used to ensure availability and recovery from failure. Cloudant databases and replication provide industry standard practices of availability and eventual replication.
+
+
+*****************************
+13.) as with 11 answer from blue mix and recent public api example
+
+- Spoke with max, the public api resiliency was, by design, the ability to not immediately cease operationw when a message queue became unavailable, but instead to have a retry period to allow for a connection to be restablished and processing to continue before reporting failure.
+
+- Specifically with bluemix, which is based on Cloud Foundry, we would build components to be able to utilize Cloud Foundry helath monitoring enabling it to automatically adjust for availability and ascaling.
+- The assumption for a distributed system is that external connections are not guaranteed and connection resiliency between components is required.
+
+14.) can you talk to bluemix here in terms of autoscaling.  I believe this is different with public bluemix versus dedicated perhaps but have a think about it.
+
+- Bluemix has the ability to auto-scale the number instances, up or down, based on policy metrics of CPU, JVM Heap, Memory usage. This scaling woudl be at a specific Geo Location and not across locations.
+
+15.) Security in bluemix we need to understand about datacenters, authentication, monitoring etc please scan the doc link to help answer this one
+Not sure if you want to get together to discuss answers or split it amongst you all
+
+- BlueId for OAuth authentication. Trent indicated that Client Federation of login info is in the roadmap.

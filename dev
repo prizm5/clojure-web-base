@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ $# -eq 0 ]
+  then
+	lein ring server-headless 8081
+  else
+	echo "Starting server on port: $1"
+	lein ring server-headless $1 
+fi
+

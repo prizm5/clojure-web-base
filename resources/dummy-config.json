@@ -1,0 +1,7 @@
+{
+    "event-db": "koopa-events",
+    "read-db": "koopa-read",
+    "event-test-db": "koopa-test-events",
+    "read-test-db": "koopa-test-read",
+    "cloudant-url": "http://steveshogren:mycloudant@steveshogren.cloudant.com"
+}

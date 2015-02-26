@@ -1,0 +1,26 @@
+disk: 500M
+path: ./target/nimbus-api.war
+domain: mybluemix.net
+instances: 1
+memory: 512M
+applications:
+- name: nimbus-api
+  env:
+    event_db: bluemix-events
+    read_db: bluemix-events-read 
+- name: jeff-api
+  env:
+    event_db: jeff-events
+    read_db: jeff-events-read 
+- name: qa-api
+  env:
+    event_db: qa-events
+    read_db: qa-events-read 
+- name: nimbus-uitest-api
+  env:
+    event_db: nimbus-uitest-events
+    read_db: nimbus-uitest-events-read 
+- name: ba-api
+  env:
+    event_db: ba-events
+    read_db: ba-events-read 

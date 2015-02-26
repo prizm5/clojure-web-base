@@ -1,0 +1,753 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"data",
+				"dataObj"
+			],
+			[
+				"bro",
+				"browserSync"
+			],
+			[
+				"pro",
+				"prod"
+			],
+			[
+				"Simpl",
+				"SimpleRefDataService"
+			],
+			[
+				"resol",
+				"resolveData"
+			],
+			[
+				"reso",
+				"resolveData"
+			],
+			[
+				"curren",
+				"currencies"
+			],
+			[
+				"cur",
+				"currentMode"
+			],
+			[
+				"edi",
+				"editingExisting"
+			],
+			[
+				"cont",
+				"contact"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 2421,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "bower.json",
+			"settings":
+			{
+				"buffer_size": 1093,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 16 files for \"algo.halcyon.resolvers\"\n\n0 matches across 0 files\n\n\nSearching 15 files for \"algo.halcyon.resolvers\"\n\n0 matches across 0 files\n\n\nSearching 22 files for \"algo.halcyon.resolvers\"\n\n/home/web/development/nimbus-refdata/resources/dev/scripts/refdata/basicRefData.js:\n   26    BasicRefDataResolver.$inject = ['$route', 'BasicRefDataService'];\n   27    angular\n   28:     .module('algo.halcyon.resolvers')\n   29      .service('BasicRefDataResolver', BasicRefDataResolver);\n   30  \n\n/home/web/development/nimbus-refdata/resources/dev/scripts/refdata/modules.js:\n    4  \n    5    angular\n    6:     .module('algo.halcyon.resolvers', ['algo.services.refdata']);\n    7  \n    8    angular\n\n2 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 726,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "resources/dev/scripts/refdata/basicRefData.js",
+			"settings":
+			{
+				"buffer_size": 2178,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 187.0,
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"beau",
+				"HTMLBeautify"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 350.0
+	},
+	"console":
+	{
+		"height": 97.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/web/development/nimbus-refdata/resources/dev/scripts/app.js",
+		"/home/web/development/nimbus/gulpfile.js",
+		"/home/web/development/nimbus/src/nimbus_api/configs.clj",
+		"/home/web/development/nimbus/src/nimbus_api/handler.clj",
+		"/home/web/.config/sublime-text-3/Packages/User/GoldenRatio.sublime-settings",
+		"/home/web/.config/sublime-text-3/Packages/GoldenRatio/GoldenRatio.sublime-settings",
+		"/home/web/development/halcyon/.gitignore",
+		"/home/web/development/halcyon/project.clj",
+		"/home/web/development/halcyon/util/trace.clj",
+		"/home/web/development/halcyon/src/halcyon/trace.clj",
+		"/home/web/development/halcyon/src/halcyon/read_db.clj",
+		"/home/web/development/halcyon/src/halcyon/jwt.clj",
+		"/home/web/development/halcyon/src/halcyon/handler.clj",
+		"/home/web/development/halcyon/src/halcyon/configs.clj",
+		"/home/web/development/halcyon/src/halcyon/auth.clj",
+		"/home/web/development/halcyon/src/halcyon/api.clj",
+		"/home/web/development/halcyon/src/halcyon/read/users.clj",
+		"/home/web/development/halcyon/test/nimbus_admin/test/integrations.clj",
+		"/home/web/development/halcyon/test/nimbus_admin/test/authorizations.clj",
+		"/home/web/development/halcyon/test/nimbus_admin/test/handler.clj",
+		"/home/web/development/halcyon/test/nimbus_admin/test/jwt.clj",
+		"/home/web/development/halcyon/target/classes/nimbus_admin/listener.clj",
+		"/home/web/development/halcyon/resources/dev/scripts/app.js",
+		"/home/web/development/halcyon/resources/dev/views/home.html",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_en.js",
+		"/home/web/development/halcyon/resources/dev/views/nav.html",
+		"/home/web/development/halcyon/resources/dev/scripts/shared/nav.js",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_ko.js",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_ja.js",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_it.js",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_fr.js",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_es.js",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_de.js",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_pt.js",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_ru.js",
+		"/home/web/development/halcyon/resources/dev/i18n/resources-locale_zh.js",
+		"/home/web/development/halcyon/.sass-cache/3135ab7e1cac79f53cb3318afd832f645bd029f0/_responsive-utilities.scssc",
+		"/home/web/development/halcyon/.sass-cache/ca53bf876ba142e3d161e685c62848bd2fc7a2f5/_responsive-utilities.scssc",
+		"/home/web/development/halcyon/resources/dev/styles/bootstrap-sass/bootstrap/_responsive-utilities.scss",
+		"/home/web/development/halcyon/.sass-cache/75fcaf1b4852ceb732871195e41567cc2a7d8997/home/web/development/halcyon/resources/dev/styles/bootstrap-sass/bootstrap/_responsive-utilities.scssc",
+		"/home/web/development/halcyon/resources/config.edn",
+		"/home/web/development/halcyon/resources/dummy-config.edn",
+		"/home/web/development/halcyon/resources/karma_scripts.js",
+		"/home/web/development/halcyon/resources/dev/scripts/user/users.js",
+		"/home/web/development/halcyon/resources/dev/scripts/shared/userProfile.js",
+		"/home/web/development/halcyon/resources/dev/index.html",
+		"/home/web/development/halcyon/resources/dev/styles/pages/_ui.scss",
+		"/home/web/development/halcyon/resources/dev/scripts/shared/headerCtrl.js",
+		"/home/web/development/halcyon/.sass-cache/bb76ea460ea1d9c464ec827aa62a331c40a6fa0b/_nav-off-canvas.scssc",
+		"/home/web/development/halcyon/src/nimbus_admin/configs.clj",
+		"/home/web/development/halcyon/resources/dev/scripts/UI/toastNotificationsService.js",
+		"/home/web/development/halcyon/manifest.yml",
+		"/home/web/development/halcyon/.sass-cache/568894e17a20834f22b4f41d50e95a0ba15fbe4b/main.scssc",
+		"/home/web/development/halcyon/resources/dev/scripts/shared/main.js",
+		"/home/web/development/halcyon/resources/dev/scripts/refdata/basic.html",
+		"/home/web/development/halcyon/resources/test/refdata/basicRefDataSpec.js",
+		"/home/web/development/halcyon/resources/dev/scripts/refdata/basicRefData.js",
+		"/home/web/development/halcyon/src/nimbus_admin/read_db.clj",
+		"/home/web/development/halcyon/resources/dev/views/forms/validation.html",
+		"/home/web/development/halcyon/.sass-cache/0200d9943197cd459b9b911d9b2e58b7800fc0e5/_backface-visibility.scssc",
+		"/home/web/development/halcyon/resources/dev/scripts/auth/services.js",
+		"/home/web/development/halcyon/src/nimbus_admin/handler.clj",
+		"/home/web/development/halcyon/src/nimbus_admin/auth.clj",
+		"/home/web/development/halcyon/resources/dev/scripts/auth/authInterceptor.js",
+		"/home/web/development/halcyon/resources/dev/views/header.html",
+		"/home/web/development/halcyon/resources/dev/scripts/auth/headerManager.js",
+		"/home/web/development/halcyon/src/nimbus_admin/read/users.clj",
+		"/home/web/development/halcyon/resources/dev/scripts/refdata/new.html",
+		"/home/web/development/halcyon/.sass-cache/1a89b9950af7150e35479015396f9018a22d9749/_reset-filter.scssc",
+		"/home/web/development/halcyon/newrelic.yml",
+		"/home/web/development/halcyon/.sass-cache/d707d602c879219b94dfa8f91dac9990d45400b8/_bourbon-deprecated-upcoming.scssc",
+		"/home/web/development/halcyon/.sass-cache/4acd042bc359911e7ddc154d41bb90859030fea5/_responsive-tables.scssc",
+		"/home/web/development/halcyon/.sass-cache/ca53bf876ba142e3d161e685c62848bd2fc7a2f5/_responsive-embed.scssc",
+		"/home/web/development/halcyon/.sass-cache/2b02db62a1de1741433f09472fdcf723c223a5e9/_form-checkbox-radio.scssc",
+		"/home/web/development/halcyon/resources/dev/scripts/refdata/countries.html",
+		"/home/web/development/halcyon/.bowerrc",
+		"/home/web/development/halcyon/images/flags/._.DS_Store",
+		"/home/web/development/halcyon/.sass-cache/0200d9943197cd459b9b911d9b2e58b7800fc0e5/_hyphens.scssc",
+		"/home/web/development/halcyon/.sass-cache/2b02db62a1de1741433f09472fdcf723c223a5e9/_form-editor.scssc",
+		"/home/web/development/halcyon/.lein-env",
+		"/home/web/development/halcyon/.sass-cache/0200d9943197cd459b9b911d9b2e58b7800fc0e5/_user-select.scssc",
+		"/home/web/development/halcyon/.sass-cache/d9b46eae9695511badf7a8e400a0bcef6a3d411f/_header.scssc",
+		"/home/web/development/halcyon/.sass-cache/bb76ea460ea1d9c464ec827aa62a331c40a6fa0b/_header.scssc",
+		"/home/web/development/nimbus/datafiles/countries.json",
+		"/home/web/development/nimbus/datafiles/admins.json",
+		"/home/web/development/halcyon/resources/dev/scripts/refdata/countries.js",
+		"/home/web/development/halcyon/.sass-cache/4acd042bc359911e7ddc154d41bb90859030fea5/_angular-ui-tree.scssc",
+		"/home/web/development/halcyon/resources/dev/refdata/new.html",
+		"/home/web/development/halcyon/resources/dev/auth/authInterceptor.js",
+		"/home/web/development/halcyon/resources/dev/refdata/modules.js",
+		"/home/web/development/halcyon/resources/dev/scripts/shared/filters.js",
+		"/home/web/development/halcyon/resources/dev/refdata/basic.html",
+		"/home/web/development/halcyon/resources/dev/refdata/countriesService.js",
+		"/home/web/development/halcyon/resources/dev/user/users.js",
+		"/home/web/development/halcyon/resources/dev/refdata/countries.js",
+		"/home/web/development/halcyon/resources/dev/refdata/basicRefData.js",
+		"/home/web/development/halcyon/resources/dev/styles/bootstrap-sass/bootstrap/mixins/_grid-framework.scss",
+		"/home/web/development/halcyon/resources/dev/styles/bootstrap-sass/bootstrap/mixins/_vendor-prefixes.scss",
+		"/home/web/development/halcyon/resources/dev/views/tables/responsive.html",
+		"/home/web/development/halcyon/.sass-cache/3135ab7e1cac79f53cb3318afd832f645bd029f0/_responsive-embed.scssc",
+		"/home/web/development/halcyon/README.md",
+		"/home/web/development/halcyon/resources/dev/views/forms/elements.html",
+		"/home/web/development/halcyon/resources/dev/views/forms/wizard.html",
+		"/home/web/development/halcyon/bower.json",
+		"/home/web/development/halcyon/.sass-cache/1a89b9950af7150e35479015396f9018a22d9749/_nav-vertical-align.scssc",
+		"/home/web/development/halcyon/resources/dev/views/mail/single.html",
+		"/home/web/development/halcyon/resources/dev/user/invite.html",
+		"/home/web/development/halcyon/resources/dev/styles/bootstrap-sass/bootstrap/mixins/_nav-divider.scss",
+		"/home/web/development/halcyon/halcyon.sublime-project",
+		"/home/web/development/halcyon/gulpfile.js",
+		"/home/web/development/halcyon/resources/dev/refdata/countries.html",
+		"/home/web/development/halcyon/resources/dev/bower_components/modernizr/test/caniuse_files/svg-img.svg",
+		"/home/web/development/halcyon/resources/dev/bower_components/bootstrap-sass-official/sache.json",
+		"/home/web/development/halcyon/resources/public/scripts/app.js",
+		"/home/web/development/halcyon/resources/dev/styles/global/_var.scss",
+		"/home/web/development/halcyon/target/stale/extract-native.dependencies",
+		"/home/web/development/halcyon/resources/dev/refdata/simpleRefData.js",
+		"/home/web/development/halcyon/Gemfile",
+		"/home/web/development/halcyon/config.rb",
+		"/home/web/development/halcyon/resources/dev/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_nav-divider.scss",
+		"/home/web/development/halcyon/resources/dev/bower_components/jquery/src/traversing/findFilter.js",
+		"/home/web/development/halcyon/resources/dev/bower_components/angular-ui-tree/package.json",
+		"/home/web/development/halcyon/resources/dev/bower_components/modernizr/feature-detects/css-objectfit.js",
+		"/home/web/development/halcyon/resources/dev/bower_components/jquery.slimscroll/examples/allow-page-scroll.html",
+		"/home/web/development/halcyon/src/nimbus_admin/api.clj",
+		"/home/web/development/halcyon/resources/public/bower_components/font-awesome/scss/font-awesome.css",
+		"/home/web/development/nimbus/nimbus-api/README.md",
+		"/home/web/development/nimbus/nimbus-api/util/trace.clj"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/home/web/development/nimbus-refdata/resources",
+			"/home/web/development/nimbus-refdata/src",
+			"/home/web/development/nimbus/src",
+			"/home/web/development/halcyon/",
+			"/home/web/development/halcyon/resources/dev",
+			"/home/web/development/halcyon",
+			"/home/web/development/halcyon/src",
+			"/home/web/development/halcyon/resources/dev/scripts",
+			"/home/web/development/halcyon/resources/dev/",
+			"/home/web/development/halcyon/resources",
+			"/home/web/development/halcyon/resources/dev/scripts",
+			"/home/web/development/halcyon/resources/dev/scripts/shared",
+			"",
+			"/home/web/development/halcyon",
+			"/home/web/development/nimbus/datafiles",
+			"<open folders>",
+			"/home/web/development/nimbus/nimbus-api",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"algo.halcyon.resolvers",
+			"cloudant",
+			"cloudnat",
+			"cloudant-url",
+			"html",
+			"nimbus-admin",
+			"path",
+			"highlightActive",
+			"sm",
+			"a",
+			"=\"\">",
+			"href",
+			"trace",
+			"trace \"Config\"",
+			"(trace",
+			"console.log",
+			"email",
+			"module(\"User",
+			"module('User",
+			"listener",
+			"afghanis",
+			"config",
+			"refdata",
+			"filelog",
+			"watch",
+			"browserSync",
+			"watch",
+			"prod =",
+			"prod",
+			"watch",
+			"\"watch",
+			"web",
+			"halcyon",
+			"SimpleRefDataService",
+			"'];",
+			"phiqadb02",
+			";",
+			"fontawesome-webfont",
+			"nimbus-admin",
+			"></",
+			"Super",
+			"name",
+			"      ",
+			"      {",
+			"  ",
+			":",
+			" ",
+			"editMode",
+			"edit",
+			"checkCurrent",
+			"editMode()",
+			"activeAgreement =",
+			"()\">",
+			"agreementCtr",
+			"editMode",
+			"LIRA",
+			"Todos",
+			"todos",
+			"Todos",
+			"todos",
+			"img",
+			"toggle text direction",
+			"account"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"phisql08db01",
+			"\\n",
+			"\\r",
+			"\\r\\n",
+			"nimbus-api",
+			"Nimbus",
+			" ",
+			": ",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "gulpfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2421,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1683,
+								1683
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 546.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "bower.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1093,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								537,
+								537
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 726,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										397,
+										419
+									],
+									[
+										622,
+										644
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								402,
+								402
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 117.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/dev/scripts/refdata/basicRefData.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2178,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								953,
+								953
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 234.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "nimbus-refdata.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"gulp",
+				"gulpfile.js"
+			],
+			[
+				"resou",
+				"resources/dev/i18n/resources-locale_en.js"
+			],
+			[
+				"home",
+				"resources/dev/views/home.html"
+			],
+			[
+				"nav.h",
+				"resources/dev/views/nav.html"
+			],
+			[
+				"nav.j",
+				"resources/dev/scripts/shared/nav.js"
+			],
+			[
+				"inde",
+				"resources/dev/index.html"
+			],
+			[
+				"refdata/bas",
+				"resources/dev/scripts/refdata/basic.html"
+			],
+			[
+				"refdata",
+				"resources/dev/scripts/refdata/basicRefData.js"
+			],
+			[
+				"new.h",
+				"resources/dev/scripts/refdata/new.html"
+			],
+			[
+				".edn",
+				"resources/config.edn"
+			],
+			[
+				"users",
+				"src/nimbus_admin/read/users.clj"
+			],
+			[
+				"nav",
+				"resources/dev/scripts/shared/nav.js"
+			],
+			[
+				"hea",
+				"resources/dev/scripts/shared/headerCtrl.js"
+			],
+			[
+				"countr",
+				"resources/dev/scripts/refdata/countries.html"
+			],
+			[
+				"app",
+				"resources/dev/scripts/app.js"
+			],
+			[
+				"authin",
+				"resources/dev/scripts/auth/authInterceptor.js"
+			],
+			[
+				"ind",
+				"resources/dev/index.html"
+			],
+			[
+				"handler",
+				"src/nimbus_admin/handler.clj"
+			],
+			[
+				"app.js",
+				"resources/dev/scripts/app.js"
+			],
+			[
+				"basic",
+				"resources/dev/refdata/basic.html"
+			],
+			[
+				"nav.ht",
+				"resources/dev/views/nav.html"
+			],
+			[
+				"home.h",
+				"resources/dev/views/home.html"
+			],
+			[
+				"new.",
+				"resources/dev/refdata/new.html"
+			],
+			[
+				"basicref",
+				"resources/dev/refdata/basicRefData.js"
+			],
+			[
+				"index",
+				"resources/dev/index.html"
+			],
+			[
+				"count",
+				"resources/dev/refdata/countries.html"
+			],
+			[
+				"simpl",
+				"resources/dev/refdata/simpleRefData.js"
+			],
+			[
+				"gulpf",
+				"gulpfile.js"
+			],
+			[
+				"config",
+				"src/nimbus_admin/configs.clj"
+			],
+			[
+				"index.h",
+				"resources/dev/index.html"
+			],
+			[
+				"algo-",
+				"resources/public/js/lib/algo-autocomplete.js"
+			],
+			[
+				"agreements",
+				"resources/public/views/agreements.html"
+			],
+			[
+				"agreement",
+				"resources/public/views/agreementform.html"
+			],
+			[
+				"edit",
+				"resources/public/views/editableAutocomplete.html"
+			],
+			[
+				"pro",
+				"project.clj"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 200.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

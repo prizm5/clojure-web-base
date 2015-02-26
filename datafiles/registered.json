@@ -1,0 +1,7 @@
+{"data": 
+	[
+
+	{"record-type":"event","event":"user-registered","date":"20141202T172259.601Z","executor":"admin","version":1,"doc":{"identity":"admin","email":"admin","version":1}}
+
+	]
+}

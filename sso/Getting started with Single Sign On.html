@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)https://www.ng.bluemix.net/docs/#services/SingleSignOn/index.html#ssogs_006 -->
+<html class="dj_webkit dj_chrome dj_contentbox dj_landscape dj_tablet mobile"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<title>Getting started with Single Sign On</title> 
+	<link rel="icon" type="image/png" href="./Getting started with Single Sign On_files/bluemixdarklogo_35.png">
+	<link rel="stylesheet" type="text/css" href="./Getting started with Single Sign On_files/docUI.css">
+ 	
+ 	<script type="text/javascript">		
+		//Determine which language Bluemix doc and dojo should load...
+		//Step a: look at the url
+		var lang = undefined;
+		var lhref = location.href;
+		if (lhref && lhref.indexOf("?") > 0) {
+			var query = lhref.substring(lhref.indexOf("?") + 1);  
+			var pairs = query.split("&"); 
+			for (var i = 0; i < pairs.length; i++) { 
+				var pair = pairs[i];
+				var eqPos = pair.indexOf('=');
+				if (eqPos == -1) continue;
+				var arg = pair.substring(0, eqPos);
+				if (arg === "locale") {	//this has to match Constants.localeParamName
+					lang = pair.substring(eqPos+1); 
+					break;
+				}
+			}
+		}
+		//Step b: look at the browser setting
+		if (!lang) {
+			
+            lang = "en-US";
+            if(lang){
+            	lang = lang.toLowerCase().replace("_","-");
+            }
+		}
+		//Step c: if nothing found, default to English
+		if (!lang) {
+			lang = "en-us";
+		}
+		//Fix for dojo - this is required for dojo because it otherwise treats pt as pt-br
+		if (lang === "pt") lang = "pt-pt";		
+	</script>	
+ 	
+ 	<script type="text/javascript" src="./Getting started with Single Sign On_files/config.js"></script>
+ 	<script type="text/javascript" src="./Getting started with Single Sign On_files/highlight.pack.js"></script>
+ 	<script type="text/javascript" src="./Getting started with Single Sign On_files/ZeroClipboard.min.js"></script>
+ 	
+ 	<script type="text/javascript" charset="utf-8" src="./Getting started with Single Sign On_files/app_ROOT.js"></script><script type="text/javascript" charset="utf-8" src="./Getting started with Single Sign On_files/gregorian.js"></script><script type="text/javascript" src="./Getting started with Single Sign On_files/dojo.js"></script>
+	<script type="text/javascript" src="./Getting started with Single Sign On_files/app.js"></script>
+
+	
+<script language="javascript" type="text/javascript" src="./Getting started with Single Sign On_files/50200034.js"></script><style>.mblScrollableScrollTo0{-webkit-animation-name: scrollableViewScroll0;}@-webkit-keyframes scrollableViewScroll0{}</style><style>.mblScrollableScrollTo1{-webkit-animation-name: scrollableViewScroll1;}@-webkit-keyframes scrollableViewScroll1{}</style><style>.mblScrollableScrollTo2{-webkit-animation-name: scrollableViewScroll2;}@-webkit-keyframes scrollableViewScroll2{}</style><style>.mblScrollableFadeScrollBar{  -webkit-animation-duration: 1s;  -webkit-animation-name: scrollableViewFadeScrollBar;}@-webkit-keyframes scrollableViewFadeScrollBar{  from { opacity: 0.6; }  to { opacity: 0; }}</style></head>
+
+<body class="docUI mblBackground idx_dojo_1_9" style="visibility: visible;">
+    
+    <div id="docUIContainer" data-dojo-type="docUI/widgets/BorderContainer" data-dojo-props="style:&quot;width:100%; height:100%&quot;, gutters: false" class="dijitBorderContainerNoGutter dijitContainer idxBorderContainerToggle dijitLayoutContainer" widgetid="docUIContainer" style="width: 100%; height: 100%; padding: 0px;">
+		
+		<div id="topNavPane" dojotype="docUI/widgets/ContentPane" data-dojo-props="
+			region:&quot;top&quot;, style:&quot;height: 55px; padding:0; margin:0; &quot;, splitter:false" class="dijitContentPane dijitBorderContainerNoGutter-child dijitBorderContainerNoGutter-dijitContentPane dijitBorderContainerNoGutterPane dijitAlignTop" widgetid="topNavPane" style="height: 55px; padding: 0px; margin: 0px; left: 0px; top: 0px; position: absolute; width: 1466px;">
+			<div class="docUIBannerDiv" id="docUIBanner" widgetid="docUIBanner">
+	<header>
+		<div class="ProductBanner">
+			<div class="navToolDiv" data-dojo-attach-event="click:_onNavToolClick">
+				<span type="button" class="navbar-toggle">
+					<span class="navTool">≡</span>
+				</span>
+			</div>
+			<div class="homeLogoAreaDiv">
+				<span data-dojo-attach-event="click:_onHomeClick" class="logoArea" data-dojo-attach-point="logoAreaDiv">
+					<span>
+						<img class="BannerLogoImg cloudOESpriteIcon i-logo" src="./Getting started with Single Sign On_files/bluemixdarklogo_35.png">
+					</span>
+					<span class="ProductName ProductSubtitleLight">
+						<span class="ibm">IBM <span class="bluemix">Bluemix </span><span class="titleEnd">Docs</span></span>
+					</span>
+				</span>
+			</div>
+			<div class="searchAndReturnDiv" data-dojo-attach-event="click:_onSearchAndReturnClick">
+				<span class="searchImg" data-dojo-attach-point="searchBtn"></span>
+				<span class="returnPageImg docUIHide" data-dojo-attach-point="returnPageBtn"></span>
+			</div>
+		</div>
+		<div data-dojo-attach-point="BannerIconNavAreaDiv" class="BannerIconNavAreaDiv bannerIconNavDiv defalutHeaderIconNavArea" id="docUI/views/BannerIconNav_0" widgetid="docUI/views/BannerIconNav_0">
+
+		<!-- User Profile -->
+		<div class="Profile" data-dojo-attach-point="profile">
+			<div class="separator"></div>
+			<div class="profile-icon" data-dojo-attach-point="profileIcon" alt="Profile Settings"></div>
+			<ul class="info settings-menu" data-dojo-attach-point="cloudOENotificationPaneInfo" tabindex="0">
+				<li class="dark disabled">User Account</li>
+				<li>
+					<div class="name" data-dojo-attach-point="cloudOEProfilePaneUserName"></div>
+					<div class="logout">
+	  					<a class="account-link" href="javascript:;" data-dojo-attach-event="mouseDown:_onAccountClick" data-dojo-attach-point="accountLink" tabindex="0">
+	 						<span data-dojo-attach-point="accountLabelSpan">Account</span>
+	 					</a> 
+						<span class="cloudOEVerticalSeparator" data-dojo-attach-point="separator">|</span> 	
+						 <a class="support-link" href="javascript:;" data-dojo-attach-event="mouseDown:_onSupportClick" data-dojo-attach-point="supportLink" tabindex="0">
+	 						<span data-dojo-attach-point="accountLabelSpan">Support</span>
+	 					</a> 
+						<span class="cloudOEVerticalSeparator" data-dojo-attach-point="separator2">|</span> 					
+						<a href="javascript:;" data-dojo-attach-event="mouseDown:_onLogoutClick" data-dojo-attach-point="logoutLink" tabindex="0">
+							<span data-dojo-attach-point="logoutLabelSpan">Log out</span>
+						</a>
+					</div>
+				</li>
+ 			</ul>
+		</div>
+
+		<!-- Notification -->
+		<div class="Notification" data-dojo-attach-point="notificationButton">
+			<div class="separator"></div>
+			<span>
+				<img class="cloudOESpriteIcon i-guide" data-dojo-attach-point="notificationIcon" src="./Getting started with Single Sign On_files/blank.gif">
+			</span>
+			<div class="cloudOENotificationPane" tabindex="0" id="dijit__WidgetsInTemplateMixin_0" widgetid="dijit__WidgetsInTemplateMixin_0">
+	<div id="notification-container" data-dojo-attach-point="cloudOENotificationPaneContainer" style="display: none;">
+		<ul data-dojo-attach-point="cloudOENotificationPaneTitle">
+			<li class="dark disabled">Quick Start and Notification</li>
+			<li class="message disabled" data-dojo-attach-point="NoNotificationMsg">You have no new notifications</li>
+		</ul>
+		<div class="notificationItemContainer">
+			<ul class="cloudOENotificationPaneNotificationItemList" data-dojo-attach-point="cloudOENotificationItemList" style="display: none;">
+	 		</ul>
+	 		<ul class="cloudOENotificationPaneNotificationPopup" data-dojo-attach-point="cloudOENotificationPopup" style="display: none;">
+			</ul>
+		</div>
+	</div>
+</div>
+		</div>
+
+		<!-- Org Label -->
+		<div class="BannerOrgLabel" data-dojo-attach-point="manageButton">
+			<div class="separator"></div>
+			<div class="bannerOrgIcon i-nav-org" data-dojo-attach-point="bannerOrgIcon">
+			</div>
+			<span class="BannerOrgSelect">
+				<div class="BannerOrgName" data-dojo-attach-point="orgName"></div>
+				<div class="i-arrow-single-grey arrow-icon" data-dojo-attach-point="bannerArrowIcon"></div>
+			</span>
+			<div class="settings-menu docUIHide" tabindex="0" style="outline: none;" id="dijit__FocusMixin_0" widgetid="dijit__FocusMixin_0">
+	<div data-dojo-attach-point="containerNode"></div>
+</div>
+		</div>
+	
+</div>
+		<div data-dojo-attach-point="headerNavAreaDiv" class="headerNavAreaDiv defalutHeaderNavArea bannerNavDiv" id="docUI/views/BannerNav_0" widgetid="docUI/views/BannerNav_0">
+		<nav data-dojo-attach-point="headerNavAreaContent" class="headerNavAreaContent">
+			<ul>
+				<li id="Solutions" data-dojo-attach-point="solutionsButton">Solutions</li>
+				<li id="Dashboard" data-dojo-attach-point="dashboardButton">DASHBOARD
+				</li>
+				<li id="Catalog" data-dojo-attach-point="storeButton">Catalog</li>
+				<li id="Pricing" data-dojo-attach-point="pricingButton">Pricing</li>
+				<li id="Docs" data-dojo-attach-point="docsButton" class="is-selected">
+					<a href="https://www.ng.bluemix.net/docs/#" data-dojo-attach-point="docsLink">DOCS</a>
+				</li>
+				<li id="Community" data-dojo-attach-point="communityButton">
+					<a target="cloudOECommunity" href="http://developer.ibm.com/bluemix" data-dojo-attach-point="communityLink">COMMUNITY</a>
+				</li>
+				<li id="Signup" class="inBorder inBorderTeal inBorderCloser" data-dojo-attach-point="signupButton">
+					<a data-dojo-attach-point="signupLink" href="javascript:;">SIGN UP</a>
+				</li>
+				<li id="Login" class="inBorder" data-dojo-attach-point="loginButton">
+					<a data-dojo-attach-point="loginLink" href="javascript:;">LOG IN</a>
+				</li>
+			</ul>
+		</nav>
+</div>
+	</header>
+<div></div></div>
+			<div data-dojo-attach-point="docUISwitcherAndSearcherDiv" class="docUISwitcherAndSearcherDiv" id="docUISwitcherAndSearcher" widgetid="docUISwitcherAndSearcher">
+	<div class="contextSwitcherDiv docUIHide" data-dojo-attach-point="contextSwitcherDiv">
+		<div class="contextSwitcherLabelDiv">Docs customized for type:</div>
+		<div class="contextSwitcherContentDiv">
+			<table class="dijit dijitReset dijitInline dijitLeft dijitSelect dijitValidationTextBox dijitDownArrowButton contextSwitcher" data-dojo-attach-point="_buttonNode,tableNode,focusNode,_popupStateNode" cellspacing="0" cellpadding="0" role="listbox" aria-haspopup="true" tabindex="0" id="dijit_form_Select_0" widgetid="dijit_form_Select_0" aria-expanded="false" style="-webkit-user-select: none;"><tbody role="presentation"><tr role="presentation"><td class="dijitReset dijitStretch dijitButtonContents" role="presentation"><div class="dijitReset dijitInputField dijitButtonText" data-dojo-attach-point="containerNode,textDirNode" role="presentation"></div><div class="dijitReset dijitValidationContainer"><input class="dijitReset dijitInputField dijitValidationIcon dijitValidationInner" value="Χ " type="text" tabindex="-1" readonly="readonly" role="presentation"></div><input type="hidden" data-dojo-attach-point="valueNode" value="" aria-hidden="true"></td><td class="dijitReset dijitRight dijitButtonNode dijitArrowButton dijitDownArrowButton dijitArrowButtonContainer" data-dojo-attach-point="titleNode" role="presentation"><input class="dijitReset dijitInputField dijitArrowButtonInner" value="▼ " type="text" tabindex="-1" readonly="readonly" role="presentation"></td></tr></tbody></table>
+		</div>
+	</div>
+	<div class="docUISearchTextBox" id="dijit__WidgetsInTemplateMixin_1" widgetid="dijit__WidgetsInTemplateMixin_1">
+	<div class="dijit dijitReset dijitInline dijitLeft dijitTextBox" id="widget_dijit_form_TextBox_0" role="presentation" widgetid="dijit_form_TextBox_0"><div class="dijitReset dijitInputField dijitInputContainer"><input class="dijitReset dijitInputInner" data-dojo-attach-point="textbox,focusNode" autocomplete="off" type="text" tabindex="0" id="dijit_form_TextBox_0" value="" aria-disabled="false"><span class="dijitPlaceHolder dijitInputField">Type to search</span></div></div>
+   	<span class="searchImg" data-dojo-attach-event="click:_onSearchImgClick" data-dojo-attach-point="searchContentBtnDiv">&nbsp;</span>
+   	<span class="clearContentImg  docUIHide" data-dojo-attach-event="click:_onClearContentClick" data-dojo-attach-point="clearContentBtnDiv">&nbsp;</span>
+	<div dojotype="docUI/views/SearchTypeAhead" data-dojo-attach-point="searchTypeAheadDiv" class="docUIHide" id="docUI_views_SearchTypeAhead_0" widgetid="docUI_views_SearchTypeAhead_0"></div>
+</div>
+</div>
+		</div>
+	
+		<div id="leftNavPane" role="navigation" data-dojo-type="docUI/widgets/ContentPane" data-dojo-props="
+			region:&quot;left&quot;, style:&quot;width: 275px;&quot;, splitter:true, minSize:150, maxSize:275" class="dijitContentPane dijitBorderContainerNoGutter-child dijitBorderContainerNoGutter-dijitContentPane dijitBorderContainerNoGutterPane dijitAlignLeft" widgetid="leftNavPane" style="width: 275px; left: 0px; top: 55px; position: absolute; height: 849px;">
+			<div id="docUINav" class="mblView mblScrollableView" widgetid="docUINav" style="visibility: inherit; overflow: hidden; top: 0px; height: 848px; display: none;"><div class="mblScrollableViewContainer" style="position: absolute; top: 0px; width: 100%; transform: translate3d(0px, 0px, 0px);"><ul class="mblRoundRectList" id="dojox_mobile_RoundRectList_0" widgetid="dojox_mobile_RoundRectList_0"><li class="mblListItem navItemIsDocHome" tabindex="0" id="dojox_mobile_ListItem_0" widgetid="dojox_mobile_ListItem_0"><div class="mblListItemLabel" style="display: block;"><span class="navImgEmpty"></span><span class="navLabel">Docs</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_1" widgetid="dojox_mobile_ListItem_1" role="button"><div class="mblListItemRightIcon"><div title="" class="mblDomButtonArrow mblDomButton"><div></div></div></div><div class="mblListItemLabel" style="display: block;"><img src="./Getting started with Single Sign On_files/icon-bluemix-overview-24.png" class="navImg"><span class="navLabel">Bluemix Overview</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_2" widgetid="dojox_mobile_ListItem_2" role="button"><div class="mblListItemRightIcon"><div title="" class="mblDomButtonArrow mblDomButton"><div></div></div></div><div class="mblListItemLabel" style="display: block;"><img src="./Getting started with Single Sign On_files/icon-bluemix-mobile-24.png" class="navImg"><span class="navLabel">Creating Mobile Apps</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_3" widgetid="dojox_mobile_ListItem_3" role="button"><div class="mblListItemRightIcon"><div title="" class="mblDomButtonArrow mblDomButton"><div></div></div></div><div class="mblListItemLabel" style="display: block;"><img src="./Getting started with Single Sign On_files/icon-bluemix-createapp-24.png" class="navImg"><span class="navLabel">Creating Web Apps</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_4" widgetid="dojox_mobile_ListItem_4" role="button"><div class="mblListItemRightIcon"><div title="" class="mblDomButtonArrow mblDomButton"><div></div></div></div><div class="mblListItemLabel" style="display: block;"><img src="./Getting started with Single Sign On_files/icon-bluemix-services-24.png" class="navImg"><span class="navLabel">Services</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_5" widgetid="dojox_mobile_ListItem_5" role="button"><div class="mblListItemRightIcon"><div title="" class="mblDomButtonArrow mblDomButton"><div></div></div></div><div class="mblListItemLabel" style="display: block;"><img src="./Getting started with Single Sign On_files/icon-bluemix-managingaccount-24.png" class="navImg"><span class="navLabel">Managing Apps</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_6" widgetid="dojox_mobile_ListItem_6" role="button"><div class="mblListItemRightIcon"><div title="" class="mblDomButtonArrow mblDomButton"><div></div></div></div><div class="mblListItemLabel" style="display: block;"><img src="./Getting started with Single Sign On_files/icon-bluemix-commandline-24.png" class="navImg"><span class="navLabel">Command Line Interface</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_7" widgetid="dojox_mobile_ListItem_7" role="button"><div class="mblListItemRightIcon"><div title="" class="mblDomButtonArrow mblDomButton"><div></div></div></div><div class="mblListItemLabel" style="display: block;"><img src="./Getting started with Single Sign On_files/icon-bluemix-managingapps-24.png" class="navImg"><span class="navLabel">Managing Your Account</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_8" widgetid="dojox_mobile_ListItem_8" role="button"><div class="mblListItemRightIcon"><div title="" class="mblDomButtonArrow mblDomButton"><div></div></div></div><div class="mblListItemLabel" style="display: block;"><img src="./Getting started with Single Sign On_files/icon-bluemix-troubleshooting-24.png" class="navImg"><span class="navLabel">Troubleshooting</span></div></li></ul><div data-dojo-attach-point="headerNavAreaDiv" class="headerNavAreaDiv bannerNavDiv" id="docUI/views/BannerNav_1" widgetid="docUI/views/BannerNav_1">
+		<nav data-dojo-attach-point="headerNavAreaContent" class="headerNavAreaContent">
+			<ul>
+				<li id="Solutions" data-dojo-attach-point="solutionsButton">Solutions</li>
+				<li id="Dashboard" data-dojo-attach-point="dashboardButton">DASHBOARD
+				</li>
+				<li id="Catalog" data-dojo-attach-point="storeButton">Catalog</li>
+				<li id="Pricing" data-dojo-attach-point="pricingButton">Pricing</li>
+				<li id="Docs" data-dojo-attach-point="docsButton" class="is-selected">
+					<a href="https://www.ng.bluemix.net/docs/#" data-dojo-attach-point="docsLink">DOCS</a>
+				</li>
+				<li id="Community" data-dojo-attach-point="communityButton">
+					<a target="cloudOECommunity" href="http://developer.ibm.com/bluemix" data-dojo-attach-point="communityLink">COMMUNITY</a>
+				</li>
+				<li id="Signup" class="inBorder inBorderTeal inBorderCloser" data-dojo-attach-point="signupButton">
+					<a data-dojo-attach-point="signupLink" href="javascript:;">SIGN UP</a>
+				</li>
+				<li id="Login" class="inBorder" data-dojo-attach-point="loginButton">
+					<a data-dojo-attach-point="loginLink" href="javascript:;">LOG IN</a>
+				</li>
+			</ul>
+		</nav>
+</div></div></div>
+		<div class="mblView mblScrollableView" id="view_bluemixdoc_services/SingleSignOn/index.ditamap/0@14F95E8E35" widgetid="view_bluemixdoc_services/SingleSignOn/index.ditamap/0@14F95E8E35" style="visibility: inherit; overflow: hidden; top: 0px; height: 848px;"><div class="mblScrollableViewContainer" style="position: absolute; top: 0px; width: 100%; transform: translate3d(0px, 0px, 0px);"><h1 class="mblHeading mblHeadingCenterTitle" id="docUI/widgets/NavHeader_0" widgetid="docUI/widgets/NavHeader_0" style="-webkit-user-select: none;"><span role="button" class="mblToolBarButton mblToolBarButtonHasLeftArrow" tabindex="0" id="dojox_mobile_ToolBarButton_0" dir="ltr" widgetid="dojox_mobile_ToolBarButton_0"><span class="mblToolBarButtonArrow mblToolBarButtonLeftArrow mblColorDefault mblColorDefault45"></span><span class="mblToolBarButtonBody mblColorDefault"><table cellpadding="0" cellspacing="0" border="0" class="mblToolBarButtonText"><tbody><tr><td class="mblToolBarButtonIcon"></td><td class="mblToolBarButtonLabel">Back</td></tr></tbody></table></span></span><span class="mblHeadingSpanTitle"><span class="navLabel">Single Sign On</span></span><div class="mblHeadingDivTitle" role="heading" aria-level="1"><span class="navLabel">Single Sign On</span></div></h1><ul class="mblRoundRectList" id="dojox_mobile_RoundRectList_1" widgetid="dojox_mobile_RoundRectList_1"><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_9" widgetid="dojox_mobile_ListItem_9"><div class="mblListItemLabel" style="display: block;"><span class="navSub icon"></span><span class="navLabel">Single Sign On with OAuth 2.0</span></div></li><li class="mblListItem listItemSelected" tabindex="0" id="dojox_mobile_ListItem_10" widgetid="dojox_mobile_ListItem_10"><div class="mblListItemLabel" style="display: block;"><span class="navSub icon"></span><span class="navLabel">How the Single Sign On service works</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_11" widgetid="dojox_mobile_ListItem_11"><div class="mblListItemLabel" style="display: block;"><span class="navSub icon"></span><span class="navLabel">Creating a Single Sign On client configuration</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_12" widgetid="dojox_mobile_ListItem_12"><div class="mblListItemLabel" style="display: block;"><span class="navSub icon"></span><span class="navLabel">User profile attributes</span></div></li><li class="mblListItem" tabindex="0" id="dojox_mobile_ListItem_13" widgetid="dojox_mobile_ListItem_13"><div class="mblListItemLabel" style="display: block;"><span class="navSub icon"></span><span class="navLabel">User self service for Single Sign On</span></div></li></ul><div data-dojo-attach-point="headerNavAreaDiv" class="headerNavAreaDiv bannerNavDiv" id="docUI/views/BannerNav_2" widgetid="docUI/views/BannerNav_2">
+		<nav data-dojo-attach-point="headerNavAreaContent" class="headerNavAreaContent">
+			<ul>
+				<li id="Solutions" data-dojo-attach-point="solutionsButton">Solutions</li>
+				<li id="Dashboard" data-dojo-attach-point="dashboardButton">DASHBOARD
+				</li>
+				<li id="Catalog" data-dojo-attach-point="storeButton">Catalog</li>
+				<li id="Pricing" data-dojo-attach-point="pricingButton">Pricing</li>
+				<li id="Docs" data-dojo-attach-point="docsButton" class="is-selected">
+					<a href="https://www.ng.bluemix.net/docs/#" data-dojo-attach-point="docsLink">DOCS</a>
+				</li>
+				<li id="Community" data-dojo-attach-point="communityButton">
+					<a target="cloudOECommunity" href="http://developer.ibm.com/bluemix" data-dojo-attach-point="communityLink">COMMUNITY</a>
+				</li>
+				<li id="Signup" class="inBorder inBorderTeal inBorderCloser" data-dojo-attach-point="signupButton">
+					<a data-dojo-attach-point="signupLink" href="javascript:;">SIGN UP</a>
+				</li>
+				<li id="Login" class="inBorder" data-dojo-attach-point="loginButton">
+					<a data-dojo-attach-point="loginLink" href="javascript:;">LOG IN</a>
+				</li>
+			</ul>
+		</nav>
+</div></div></div></div><div class="dijitSplitter dijitSplitterV idxSplitterV idxSplitter idxSplitterLeftNormal dijitLeftNormal dijitAlignLeft" dojoattachevent="onkeypress:_onKeyPress,press:_startDrag,onmouseenter:_onMouse,onmouseleave:_onMouse" tabindex="-1" wairole="separator" id="leftNavPane_splitter" widgetid="leftNavPane_splitter" style="left: 275px; top: 55px; position: absolute; height: 849px;">
+	<div dojoattachpoint="thumbContainer" class="idxSplitterThumbOuter" style="top: 0px;">
+		<div dojoattachpoint="bartop" class="idxSplitterBarTop"></div>
+		<div dojoattachpoint="thumb" role="button" class="dijitSplitterThumb idxSplitterThumbCollapse" tabindex="0" aria-pressed="false" title="Collapse Section"></div>
+		<div dojoattachpoint="thumb2" role="button" class="dijitSplitterThumb idxSplitterThumbExpand" tabindex="0" aria-pressed="false" title="Expand Section"></div>
+		<div dojoattachpoint="barbottom" class="idxSplitterBarBottom"></div>
+	</div>
+</div>
+		
+		
+		
+		
+		<div id="mainContentPane" role="main" data-dojo-type="docUI/widgets/ContentPane" data-dojo-props="
+			region:&quot;center&quot;" class="dijitContentPane dijitBorderContainerNoGutter-child dijitBorderContainerNoGutter-dijitContentPane dijitBorderContainerNoGutterPane dijitAlignCenter dijitContentPaneSingleChild" widgetid="mainContentPane" style="left: 275px; top: 55px; position: absolute; width: 1191px; height: 849px;">
+			
+			
+			<div id="mainStackContainer" data-dojo-type="docUI/widgets/StackContainer" class="dijitStackContainer dijitContainer dijitLayoutContainer mainStackContainer" widgetid="mainStackContainer" style="width: 1191px; height: 849px;">
+				<div role="tabpanel" class="dijitStackContainerChildWrapper dijitHidden" aria-label="mainPage"><div id="mainPage" data-dojo-type="docUI/widgets/ContentPane" data-dojo-props="title:&quot;mainPage&quot;" class="dijitContentPane dijitStackContainer-child dijitStackContainer-dijitContentPane" widgetid="mainPage" title="" style="left: 0px; top: 0px; width: 1191px; height: 849px;">
+					<div data-dojo-attach-point="docUIMainDiv" class="docUIMainDiv" id="docUIMainDiv" widgetid="docUIMainDiv">	
+	<section data-dojo-attach-point="docUIDescDiv" class="docUIDescDiv">
+		<div data-dojo-attach-point="descContentDiv" class="descContentDiv">
+		<div class="wrapper"><div class="two-column"><div class="two-column-first"><img src="./Getting started with Single Sign On_files/landingpage-rocket.png"></div><div class="two-column-second"><div class="contained"><h1>What is Bluemix?</h1><p>IBM<sup>®</sup> Bluemix<sup>™</sup> is an open-standards, cloud-based platform for building, managing, and running apps of all types, such as web, mobile, big data, and smart devices. Capabilities include Java, mobile back-end development, and application monitoring, as well as features from ecosystem partners and open source—all provided as-a-service in the cloud.</p><button class="btn btn-primary">Learn More</button></div></div></div></div></div>	
+		<hr class="docUIDescDivHr docDescDivHr docUIHide" data-dojo-attach-point="docUIDescDivHr">
+	</section>	
+
+	
+
+	<section data-dojo-attach-point="runTimeDiv" class="runTimeDiv">
+		<div class="sectionHeader">
+			<h2 class="sectionName">Getting Started with Runtimes</h2>
+			<hr>
+		</div>
+		<div class="runTimeContentDiv runtime subContent" data-dojo-attach-point="runTimeContentDiv">
+		<ul><li class="tileListItemBadge_ibm_created"><div class="tileListItemMainWarpper"><div class="tileListItemMainDiv"><img src="./Getting started with Single Sign On_files/javaweb_featured.png" title="Liberty for Java&amp;trade;"></div></div><div class="tileTitle"><div class="tileName textWithEllipsis" title="Liberty for Java&amp;trade;">Liberty for Java™</div><a class="button" title="View Docs" href="https://www.ng.bluemix.net/docs/#starters/liberty/index.html#liberty">View Docs</a></div></li><li class="tileListItemBadge_ibm_created"><div class="tileListItemMainWarpper"><div class="tileListItemMainDiv"><img src="./Getting started with Single Sign On_files/node_featured.png" title="SDK for Node.js"></div></div><div class="tileTitle"><div class="tileName textWithEllipsis" title="SDK for Node.js">SDK for Node.js</div><a class="button" title="View Docs" href="https://www.ng.bluemix.net/docs/#starters/nodejs/index.html#nodejs">View Docs</a></div></li><li class="tileListItemBadge_ibm_community"><div class="tileListItemMainWarpper"><div class="tileListItemMainDiv"><img src="./Getting started with Single Sign On_files/rubyonrails_featured.png" title="Ruby on Rails"></div></div><div class="tileTitle"><div class="tileName textWithEllipsis" title="Ruby on Rails">Ruby on Rails</div><a class="button" title="View Docs" href="https://www.ng.bluemix.net/docs/#starters/rails/index.html#rails">View Docs</a></div></li><li class="tileListItemBadge_ibm_community"><div class="tileListItemMainWarpper"><div class="tileListItemMainDiv"><img src="./Getting started with Single Sign On_files/rubysinatra_featured.png" title="Ruby Sinatra"></div></div><div class="tileTitle"><div class="tileName textWithEllipsis" title="Ruby Sinatra">Ruby Sinatra</div><a class="button" title="View Docs" href="https://www.ng.bluemix.net/docs/#starters/rubysinatra/index.html#rubyhelloworld">View Docs</a></div></li></ul></div>	
+	</section>	
+
+	<section data-dojo-attach-point="serviceDiv" class="serviceDiv">
+		<div class="sectionHeader">
+			<h2 class="sectionName">Featured Services</h2>
+			<hr>
+		</div>
+		<div class="serviceContentDiv subContent" data-dojo-attach-point="serviceContentDiv">
+		<div class="serviceBlock"><div class="serviceBlockTitle" title="User Modeling">User Modeling</div><div class="tileName textWithEllipsis" title="Uses linguistic analytics to extract a set of personality and social traits from the way a person communicates.">Uses linguistic analytics to extract a set of personality and social traits from the way a person communicates.</div><button class="btn btn-primary" title="View Docs">View Docs</button></div><div class="serviceBlock odd"><div class="serviceBlockTitle" title="Message Resonance">Message Resonance</div><div class="tileName textWithEllipsis" title="Analyzes draft content and scores how well it is likely to be received by a specific target audience.">Analyzes draft content and scores how well it is likely to be received by a specific target audience.</div><button class="btn btn-primary" title="View Docs">View Docs</button></div><div class="serviceBlock"><div class="serviceBlockTitle" title="Relationship Extraction">Relationship Extraction</div><div class="tileName textWithEllipsis" title="Parses sentences into their various components and detects relationships between the components.">Parses sentences into their various components and detects relationships between the components.</div><button class="btn btn-primary" title="View Docs">View Docs</button></div><div class="serviceBlock odd"><div class="serviceBlockTitle" title="Cloudant">Cloudant</div><div class="tileName textWithEllipsis" title="Fully managed NoSQL JSON database platform for demanding web and mobile workloads.">Fully managed NoSQL JSON database platform for demanding web and mobile workloads.</div><button class="btn btn-primary" title="View Docs">View Docs</button></div><div class="serviceBlock"><div class="serviceBlockTitle" title="SQLDB">SQLDB</div><div class="tileName textWithEllipsis" title="Fully managed relational database powered by DB2&amp;trade;, for demanding web and transactional workloads.">Fully managed relational database powered by DB2™, for demanding web and transactional workloads.</div><button class="btn btn-primary" title="View Docs">View Docs</button></div><div class="serviceBlock odd"><div class="serviceBlockTitle" title="Push">Push</div><div class="tileName textWithEllipsis" title="Creates and schedules push notifications for iOS and Android devices to engage users when they are not using the app.">Creates and schedules push notifications for iOS and Android devices to engage users when they are not using the app.</div><button class="btn btn-primary" title="View Docs">View Docs</button></div><div class="serviceBlock"><div class="serviceBlockTitle" title="Mobile Quality Assurance">Mobile Quality Assurance</div><div class="tileName textWithEllipsis" title=" Instruments apps to capture tester and live-user experiences, including logs, feedback, and metrics. "> Instruments apps to capture tester and live-user experiences, including logs, feedback, and metrics. </div><button class="btn btn-primary" title="View Docs">View Docs</button></div><div class="serviceBlock odd"><div class="serviceBlockTitle" title="Monitoring and Analytics">Monitoring and Analytics</div><div class="tileName textWithEllipsis" title="Visibility and control over your app&#39;s performance and availability. Analytics to keep your app up and performing well.">Visibility and control over your app's performance and availability. Analytics to keep your app up and performing well.</div><button class="btn btn-primary" title="View Docs">View Docs</button></div><div class="serviceBlock"><div class="serviceBlockTitle" title="Continuous Delivery Pipeline">Continuous Delivery Pipeline</div><div class="tileName textWithEllipsis" title="Set up to automatically compile, test, package, deploy, and push apps to Bluemix.">Set up to automatically compile, test, package, deploy, and push apps to Bluemix.</div><button class="btn btn-primary" title="View Docs">View Docs</button></div><div class="serviceBlock odd pre4needToEmpty2 pre3needToEmpty2"><div class="serviceBlockTitle" title="Cloud Integration">Cloud Integration</div><div class="tileName textWithEllipsis" title="Create APIs that securely integrate with your existing on-premises systems.">Create APIs that securely integrate with your existing on-premises systems.</div><button class="btn btn-primary" title="View Docs">View Docs</button></div></div>	
+	</section>	
+
+	<div data-dojo-attach-point="detailFooterDiv" class="detailFooterDiv" id="docUI/views/DetailPageFooter_0" widgetid="docUI/views/DetailPageFooter_0">	
+	<div class="detailFooterContentDiv">
+		<a data-dojo-attach-point="tremsOfUseDiv" href="https://www.ng.bluemix.net/docs/#navigation/notices.html#terms">Terms of use</a><span data-dojo-attach-point="tremsOfUseDivSeparator">/</span>
+		<a data-dojo-attach-point="noticesDiv" href="https://www.ng.bluemix.net/docs/#navigation/notices.html">Notices</a>
+	</div>
+</div>
+	
+</div>
+				</div></div>
+				<div role="tabpanel" class="dijitStackContainerChildWrapper dijitVisible" aria-label="detailPage"><div id="detailPage" data-dojo-type="docUI/widgets/ContentPane" data-dojo-props="title:&quot;detailPage&quot;" class="dijitContentPane dijitStackContainer-child dijitStackContainer-dijitContentPane" widgetid="detailPage" title="" style="left: 0px; top: 0px; width: 1191px; height: 849px;">
+					<div data-dojo-attach-point="detailDiv" class="docUIDetailDiv docUIDetailDivHover dijitHover docUIDetailDivFocused docUIDetailDivHoverFocused dijitHoverFocused dijitFocused" id="docUIDetailDiv" widgetid="docUIDetailDiv">	
+	<div data-dojo-attach-point="detailNavDiv" class="detailNavDiv"><a href="https://www.ng.bluemix.net/docs/#services/services.html" class="">Services</a><span class="navImg">&gt;</span><span class=" disabledClick">Security</span><span class="navImg">&gt;</span><a href="https://www.ng.bluemix.net/docs/#services/SingleSignOn/index.html#sso_gettingstarted" class="">Single Sign On</a></div>
+	<div data-dojo-attach-point="detailContentDiv" class="detailContentDiv" style="min-height: 673px;"><div class="metaArea"><meta name="copyright" content="© Copyright IBM Corporation 2014"><meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2014"><meta name="DC.Title" content="Getting started with Single Sign On"><meta name="abstract" content="IBM Single Sign On for Bluemix is a policy-based authentication service that provides an easy to embed single sign-on capability for web applications. The service supports an OAuth 2.0 authorization code flow with a user profile as a protected API resource."><meta name="Description" content="IBM Single Sign On for Bluemix is a policy-based authentication service that provides an easy to embed single sign-on capability for web applications. The service supports an OAuth 2.0 authorization code flow with a user profile as a protected API resource."><meta name="DC.subject" content="service, Single Sign On, Security"><meta name="keywords" content="service, Single Sign On, Security"><meta name="DC.Date" scheme="iso8601" content="2014-11-06"><meta name="DC.Language" content="en-us"><meta name="IBM.Country" content="ZZ"></div><div class="detailContentArea" id="detailContentArea"><main role="main"><article role="article" aria-labelledby="d68e7"><article class="nested0" id="sso_gettingstarted"><h1 class="topictitle1" id="d68e7">Getting started with Single Sign On</h1><div class="version" id="versionArea">Last Updated: 11/6/2014</div><div data-dojo-attach-point="relatedLinksDiv" class="relatedLinksDivNum1 relatedLinksDiv" id="docUI/views/RelatedLinks_0" widgetid="docUI/views/RelatedLinks_0">	
+	<div data-dojo-attach-point="relatedLinksNavDiv" class="relatedLinksNavDiv">
+		<div data-dojo-attach-point="serivceLinksNavAreaId" class="serivceLinksNavAreaId docUIHide relatedLinksNavArea" data-dojo-attach-event="click:_onServiceLinkNavClick"></div>
+		<div data-dojo-attach-point="sdkLinksNavAreaId" class="sdkLinksNavAreaId docUIHide relatedLinksNavArea" data-dojo-attach-event="click:_onSdkLinkNavClick"></div>
+		<div data-dojo-attach-point="apiLinksNavAreaId" class="apiLinksNavAreaId docUIHide relatedLinksNavArea" data-dojo-attach-event="click:_onApiLinkNavClick"></div>
+		<div data-dojo-attach-point="runtimeLinksNavAreaId" class="runtimeLinksNavAreaId docUIHide relatedLinksNavArea" data-dojo-attach-event="click:_onRuntimeLinkNavClick"></div>
+		<div data-dojo-attach-point="docLinksNavAreaId" class="docLinksNavAreaId relatedLinksNavArea selectedRelatedLinkNav" data-dojo-attach-event="click:_onDocLinkNavClick"><div class="docLinksArea linksContentAreanoLinksContentArea" id="docLinksAreaDiv"><div class="docLinksImgDiv relatedLinksImgDiv hasBreadcrumb" id="docLinksImgDiv"><div class="relatedLinkImg"></div></div><div class="docLinksContentTitleArea relatedLinksContentTitleArea"><span class="docLinksContentTitleSpan relatedLinksContentTitleSpan">RELATED LINKS</span></div></div></div>
+	</div>
+	<div data-dojo-attach-point="relatedLinksContentDiv" class="relatedLinksContentDiv">
+		<div data-dojo-attach-point="serivceLinksContentAreaId" class="serivceLinksContentAreaId docUIHide relatedLinksContentArea"></div>
+		<div data-dojo-attach-point="sdkLinksContentAreaId" class="sdkLinksContentAreaId docUIHide relatedLinksContentArea"></div>
+		<div data-dojo-attach-point="apiLinksContentAreaId" class="apiLinksContentAreaId docUIHide relatedLinksContentArea"></div>
+		<div data-dojo-attach-point="runtimeLinksContentAreaId" class="runtimeLinksContentAreaId docUIHide relatedLinksContentArea"></div>
+		<div data-dojo-attach-point="docLinksContentAreaId" class="docLinksContentAreaId relatedLinksContentArea"><div class="docLinksContentArea" id="docLinksContentAreaId"><ul class="docLinksContentUl"><li class="linksLi"><div class="linksDiv"><a href="http://tools.ietf.org/html/rfc6749" rel="external" title="(Opens in a new tab or window)" target="_blank">OAuth 2.0 specification </a></div></li><li class="linksLi"><div class="linksDiv"><a href="http://tools.ietf.org/html/rfc6819" rel="external" title="(Opens in a new tab or window)" target="_blank">OAuth 2.0 Threat Models</a></div></li><li class="linksLi isRelatedLinksEvenClse2"><div class="linksDiv"><a href="https://www.ng.bluemix.net/#/pricing" rel="external" title="(Opens in a new tab or window)" target="_blank"><span class="keyword">IBM® Bluemix™</span> Pricing
+Sheet</a></div></li><li class="linksLi isRelatedLinksEvenClse1"><div class="linksDiv"><a href="https://developer.ibm.com/bluemix/support/#prereqs" rel="external" title="(Opens in a new tab or window)" target="_blank"><span class="keyword">IBM Bluemix</span> Prerequisites</a></div></li></ul></div></div>
+	</div>
+</div>
+<div class="body taskbody"><p class="shortdesc"><span class="ph" data-hd-audience="yellow">IBM Single Sign On for Bluemix is
+a policy-based authentication service that provides an easy to embed
+single sign-on capability for web applications. The service supports
+an OAuth 2.0 authorization code flow with a user profile as a protected
+API resource.</span></p>
+<section class="section context">			<p data-hd-audience="yellow">A sample application is provided at <a href="https://hub.jazz.net/project/bluemixsso/SingleSignOnSampleClient/overview" rel="external" title="(Opens in a new tab or window)" target="_blank">https://hub.jazz.net/project/bluemixsso/SingleSignOnSampleClient/overview</a>.
+The sample application can help you write your own client application
+to leverage the IBM Single Sign On for Bluemix service's capabilities.
+If you'd like, you can fork the project to your own IBM DevOps project.
+ Use the instructions provided within the project to obtain the source
+code, build it, and then deploy it to your own IBM Bluemix space.
+ For your reference, an instance of the sample code has been deployed
+to the IBM Bluemix platform, and is available at <a href="https://idaastestclient.mybluemix.net/" rel="external" title="(Opens in a new tab or window)" target="_blank">https://idaastestclient.mybluemix.net/</a>.</p>
+</section></div>
+<article class="topic concept nested1" aria-labelledby="d68e46" lang="en-us" id="ssogs_003"><h2 class="topictitle2" id="d68e46">Single Sign On with OAuth 2.0</h2>
+<div class="body conbody"><p class="shortdesc"></p>
+<section><p> An application may use an            
+    OAuth 2.0 flow for requesting access to end-user profile data
+via an API. Using this                 method an application can determine
+the identity of the current user and use that                 data
+to effect a login. This is the same way, for example, that authentication
+can                 be achieved using the Facebook Graph API. </p>
+<p> Here is an end-to-end diagram that                 shows
+how the OAuth 2.0 authorization code flow works for obtaining user
+profile                 information with the various actors involved:</p>
+<img src="./Getting started with Single Sign On_files/oauthsso.jpg" alt=""><ol><li>User is interacting with the application and the application decides
+it needs a                     grant from the user (resource owner)
+to access the "profile" API. </li>
+<li>User is redirected to the authorization endpoint of the OAuth
+server, requesting                     the "profile" scope. User is
+required to authenticate and grant access. </li>
+<li>User is redirected back to application with authorization code. </li>
+<li>Application, acting as an OAuth client, exchanges authorization
+code for an                     access token. </li>
+<li>Application calls profile API with the access token. Profile resource
+validates                     the access token, then returns the user
+profile corresponding to the user who                     granted
+access. The application can then use this information to establish
+an                     authenticated session with the user.</li>
+</ol>
+</section></div>
+</article><article class="topic concept nested1" aria-labelledby="d68e74" lang="en-us" id="ssogs_006"><h2 class="topictitle2" id="d68e74">How the Single Sign On service works</h2>
+<div class="body conbody"><p class="shortdesc"></p>
+<p>The Single Sign On Service flow consists of the following steps:</p>
+<ol><li>Redirection for authentication and authorization</li>
+<li>Implementation of a redirect_uri</li>
+<li>Retrieval of the profile resource</li>
+</ol>
+<section><h3 class="sectiontitle">1. Redirecting for authentication and authorization</h3><p>When
+your application requires user authentication, it redirects the user's
+browser to the authorize endpoint of the single sign-on service. This
+redirect contains a set of query string parameters. Here is an example
+redirect URL:</p>
+<pre class="codeblock"><div class="codeAreaWrapper"><div id="codeCopyImgId0" class="codeCopyImg smallCopyImg" style="display: none;"></div><code class=" hljs ruby"><span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/idaas.ng.bluemix.net/sps</span><span class="hljs-regexp">/oauth20sp/oauth</span>2<span class="hljs-number">0</span>/authorize?client_id=mGELGfzaM6obYnQedoJt&amp;response_type=code&amp;scope=profile&amp;redirect_uri=<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/idaastestclient.mybluemix.net/index</span>.jsp&amp;state=<span class="hljs-number">2663620</span>a-<span class="hljs-number">4</span>b4d-<span class="hljs-number">45</span>f4-<span class="hljs-number">82</span>b6-<span class="hljs-number">20439940887</span>b&amp;requestedAuthnPolicy=<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/www.ibm.com/idaas</span><span class="hljs-regexp">/authnpolicy/basic</span></code></div></pre>
+<div class="tablenoborder"><table><caption><span class="tablecap">Table 1. Query string parameters</span></caption><thead><tr><th id="d68e106">Parameter</th>
+<th id="d68e108">Description</th>
+</tr>
+</thead>
+<tbody><tr><td headers="d68e106 ">client_id </td>
+<td headers="d68e108 ">Assigned when you bind the Single Sign On service
+to your application in Bluemix. See "Creating a Single Sign On client
+configuration" for more details.</td>
+</tr>
+<tr><td headers="d68e106 ">response_type</td>
+<td headers="d68e108 ">Must be "code" for the authorization code grant
+type as defined in the OAuth 2.0 specification.</td>
+</tr>
+<tr><td headers="d68e106 ">scope</td>
+<td headers="d68e108 ">Must be "profile" to request the user's profile.</td>
+</tr>
+<tr><td headers="d68e106 ">redirect_uri </td>
+<td headers="d68e108 ">Must be an https URL of your application, to
+which the user's browser is redirected after authentication. This
+URL also needs to be configured as part of your application binding. <p data-hd-audience="yellow">See <a data-hd-audience="yellow" href="http://www.ng.bluemix.net/docs/#services/SingleSignOn/index.html#ssogs_002" rel="external" title="(Opens in a new tab or window)" target="_blank">Creating a Single Sign On client configuration</a> for
+more details.</p>
+</td>
+</tr>
+<tr><td headers="d68e106 ">state</td>
+<td headers="d68e108 ">Defined by your application and verified at
+the redirect_uri to prevent cross-site-request-forgery attacks against
+your redirect_uri. Optional, but typically used.</td>
+</tr>
+<tr><td headers="d68e106 ">requestedAuthnPolicy </td>
+<td headers="d68e108 ">Instructs the Single Sign On service how to
+authenticate the user. Use is optional but if sent, it must be verified
+when single signon completes and the profile is read. This verification
+ensures that the Single Sign On service received and processed the
+same policy that your application requested. <p>When requestedAuthnPolicy
+is not provided in the query string, there is no specific policy in
+the request. The service behavior is the same as when  requestedAuthnPolicy
+is provided with a value of <var class="keyword varname">standard</var>.</p>
+<p>When
+requestedAuthnPolicy is provided in the query string, it contains
+one of the following values:</p>
+<dl><dt class="dlterm">http://www.ibm.com/idaas/authnpolicy/basic</dt>
+<dd>Permit authentication at any level. If a user is already logged
+in at the Single Sign On service, no further authentication of that
+user is required.</dd>
+<dt class="dlterm">http://www.ibm.com/idaas/authnpolicy/basic/verified_email	</dt>
+<dd>Permit authentication at any level. If the user already has a
+verified email address associated with their account, no further authentication
+of that user is required. If there is no verified email, the user
+is directed through a one-time-password process to verify it.</dd>
+<dt class="dlterm">http://www.ibm.com/idaas/authnpolicy/standard</dt>
+<dd>Requires the user to either use a "registered browser", or step-up
+to one-time-password (OTP) authentication. If the user is not using
+a registered browser, they can register their browser as part of that
+process.</dd>
+<dt class="dlterm">http://www.ibm.com/idaas/authnpolicy/otp</dt>
+<dd>	Requires that the user's session at the Single Sign On service
+is established with OTP.</dd>
+<dt class="dlterm">http://www.ibm.com/idaas/authnpolicy/reauth</dt>
+<dd>Requires the user to re-establish their session at the Single
+Sign On service as part of this single sign-on flow. Any level of
+authentication is accepted. For identity providers that have long-lived
+browser sessions, such as social sites, the policy appears to have
+no effect. This effect occurs because the Single Sign On service has
+no effect on the browser session with the user's real identity provider
+site.</dd>
+<dt class="dlterm">http://www.ibm.com/idaas/authnpolicy/reauth-otp	</dt>
+<dd>Requires the user to reauthenticate their session at the Single
+Sign On service as part of this single sign-on flow by using one-time
+password.</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section><section><h3 class="sectiontitle">2. Implementing a redirect_uri</h3><p>Your redirect
+URI must be an endpoint that can receive query string parameters.
+For example:</p>
+<pre class="codeblock"><div class="codeAreaWrapper"><div id="codeCopyImgId1" class="codeCopyImg smallCopyImg"></div><code class=" hljs cs">https:<span class="hljs-comment">//idaastestclient.mybluemix.net/index.jsp?code=kceVR6tJWYqkOXqNrJul37abyreaCU&amp;state=2663620a-4b4d-45f4-82b6-20439940887b</span></code></div></pre>
+<p>The
+state parameter must match the value that your application sent in
+the redirect for authorization.  </p>
+<p>The code parameter must be
+used by your application to retrieve an access token, by using direct
+communications with the token endpoint of the Single Sign On service.
+The following curl command shows an example of exchanging the authorization
+code for an access token. </p>
+<pre class="codeblock"><div class="codeAreaWrapper"><div id="codeCopyImgId2" class="codeCopyImg smallCopyImg"></div><code class=" hljs ruby">curl -d <span class="hljs-string">"client_id=mGELGfzaM6obYnQedoJt&amp;client_secret=REDACTED&amp;grant_type=authorization_code&amp;code=kceVR6tJWYqkOXqNrJul37abyreaCU&amp;redirect_uri=https://idaastestclient.mybluemix.net/index.jsp"</span> <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/idaas.ng.bluemix.net/sps</span><span class="hljs-regexp">/oauth20sp/oauth</span>2<span class="hljs-number">0</span>/token</code></div></pre>
+<div class="tablenoborder"><table><caption><span class="tablecap">Table 2. Curl command parameters</span></caption><thead><tr><th id="d68e207">Parameter</th>
+<th id="d68e209">Description</th>
+</tr>
+</thead>
+<tbody><tr><td headers="d68e207 ">client_id</td>
+<td headers="d68e209 ">Must be the same client_id that was used in
+the redirect to the authorize URL.</td>
+</tr>
+<tr><td headers="d68e207 ">client_secret</td>
+<td headers="d68e209 ">Assigned when you bind the Single Sign On service
+to your application in Bluemix. <p data-hd-audience="yellow">See <a data-hd-audience="yellow" href="http://www.ng.bluemix.net/docs/#services/SingleSignOn/index.html#ssogs_002" rel="external" title="(Opens in a new tab or window)" target="_blank">Creating a Single Sign On client configuration</a> for
+more details.</p>
+</td>
+</tr>
+<tr><td headers="d68e207 ">grant_type </td>
+<td headers="d68e209 ">Must be "authorization_code" as defined in the
+OAuth 2.0 specification.</td>
+</tr>
+<tr><td headers="d68e207 ">code</td>
+<td headers="d68e209 ">The value of the code parameter that is received
+at the redirect_uri</td>
+</tr>
+<tr><td headers="d68e207 ">redirect_uri</td>
+<td headers="d68e209 ">The URL to which the code was sent</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A successful exchange of an authorization code for an access
+token results in a JSON response. For example:</p>
+<pre class="codeblock"><div class="codeAreaWrapper"><div id="codeCopyImgId3" class="codeCopyImg smallCopyImg" style="display: none;"></div><code class=" hljs json">{"<span class="hljs-attribute">expires_in</span>":<span class="hljs-value"><span class="hljs-number">3599</span></span>,"<span class="hljs-attribute">scope</span>":<span class="hljs-value"><span class="hljs-string">"profile"</span></span>,"<span class="hljs-attribute">access_token</span>":<span class="hljs-value"><span class="hljs-string">"a4qIr9JvSIA510KIi7LN"</span></span>,"<span class="hljs-attribute">token_type</span>":<span class="hljs-value"><span class="hljs-string">"bearer"</span></span>,"<span class="hljs-attribute">refresh_token</span>":<span class="hljs-value"><span class="hljs-string">"PcpGqTx58vh2fw1Y1aJEw4nrsvfZvAOe2I4C8sbX"</span></span>}</code></div></pre>
+</section><section><h3 class="sectiontitle">3. Retrieving the profile resource</h3><p>The access
+token can now be used to retrieve the user's profile. The response
+from the <span class="ph filepath">profile.jsp</span> endpoint provides specifics
+on who the user is, so that your application can establish an authentication
+session. The following curl command demonstrates retrieval of the
+profile information:</p>
+<pre class="codeblock"><div class="codeAreaWrapper"><div id="codeCopyImgId4" class="codeCopyImg smallCopyImg" style="display: none;"></div><code class=" hljs ruby">curl -<span class="hljs-constant">H</span> <span class="hljs-string">"Authorization: bearer a4qIr9JvSIA510KIi7LN"</span> <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/idaas.ng.bluemix.net/idaas</span><span class="hljs-regexp">/resources/profile</span>.jsp</code></div></pre>
+<p>Here
+is an example of a successful response:</p>
+<pre class="codeblock"><div class="codeAreaWrapper"><div id="codeCopyImgId5" class="codeCopyImg smallCopyImg"></div><code class=" hljs json">{"<span class="hljs-attribute">lastName</span>":<span class="hljs-value">[<span class="hljs-string">"SMITH"</span>]</span>,"<span class="hljs-attribute">userDisplayName</span>":<span class="hljs-value">[<span class="hljs-string">"jsmith@example.com"</span>]</span>,"<span class="hljs-attribute">userRealm</span>":<span class="hljs-value"><span class="hljs-string">"www.ibm.com"</span></span>,"<span class="hljs-attribute">username</span>":<span class="hljs-value"><span class="hljs-string">"http:\/\/www.ibm.com\/jsmith@example.com"</span></span>,"<span class="hljs-attribute">userUniqueID</span>":<span class="hljs-value">[<span class="hljs-string">"http:\/\/www.ibm.com\/110000R11X"</span>]</span>,"<span class="hljs-attribute">AZN_CRED_CREATE_TIME</span>":<span class="hljs-value"><span class="hljs-string">"2014-10-07T01:15:21Z"</span></span>,"<span class="hljs-attribute">requestedAuthnPolicy</span>":<span class="hljs-value"><span class="hljs-string">"http:\/\/www.ibm.com\/idaas\/authnpolicy\/basic"</span></span>,"<span class="hljs-attribute">idaas.verified_email</span>":<span class="hljs-value">[<span class="hljs-string">"jsmith@example.com"</span>]</span>,"<span class="hljs-attribute">firstName</span>":<span class="hljs-value">[<span class="hljs-string">"JOHN"</span>]</span>,"<span class="hljs-attribute">name</span>":<span class="hljs-value">[<span class="hljs-string">"JOHN SMITH"</span>]</span>,"<span class="hljs-attribute">email</span>":<span class="hljs-value">[<span class="hljs-string">"jsmith@example.com"</span>]</span>,"<span class="hljs-attribute">AUTHENTICATION_LEVEL</span>":<span class="hljs-value"><span class="hljs-string">"2"</span></span>}</code></div></pre>
+<p>Your
+application must verify that the value of requestedAuthnPolicy in
+the response matches the requestedAuthnPolicy sent in the initial
+redirect URL.  </p>
+<p>For information on all attributes in the profile,
+see  <a data-hd-audience="yellow" href="http://www.ng.bluemix.net/docs/#services/SingleSignOn/index.html#user_profile_attributes" rel="external" title="(Opens in a new tab or window)" target="_blank">User profile attributes</a>.</p>
+</section></div>
+</article><article class="topic task nested1" aria-labelledby="d68e269" lang="en-us" id="ssogs_002"><h2 class="topictitle2" id="d68e269">Creating a Single Sign On client configuration</h2>
+<div class="body taskbody"><p class="shortdesc">To use single sign-on authentication with your application,
+create a Single Sign On client configuration. You create an OAuth
+client configuration when you bind an instance of the Single Sign
+On service to your Bluemix application.</p>
+<ol class="steps"><li class="step"><span class="cmd">After you bind the Single Sign On service instance to the
+application, click                     the Single Sign On service
+instance to create the client configuration.</span></li>
+<li class="step"><span class="cmd">Select one or more identity providers.</span> IBM is
+preselected.</li>
+<li class="step"><span class="cmd">Select the <span class="ph uicontrol">OAuth 2.0</span> authentication
+protocol.</span>                                      </li>
+<li class="step"><span class="cmd">In the <span class="ph uicontrol">Display Name</span> field, type
+the name you want users                     to see as the application
+name on consent-to-authenticate forms.</span></li>
+<li class="step"><span class="cmd">Select the <span class="ph uicontrol">Enabled</span> check box to
+enable the configuration. Clear           the check box if you want
+to disable the configuration.</span></li>
+<li class="step"><span class="cmd">Enter the Redirect URI for your application where the OAuth
+authorization code                                 will be sent after
+a user signs in.</span>                                      </li>
+<li class="step"><span class="cmd">Click <span class="ph uicontrol">Save</span>.</span> The
+client secret and                     client identifier are generated
+and displayed. The configuration is displayed in                 
+   read-only mode. Click <span class="ph uicontrol">Edit</span> to make changes.</li>
+</ol>
+</div>
+</article><article class="topic concept nested1" aria-labelledby="d68e323" lang="en-us" id="user_profile_attributes"><h2 class="topictitle2" id="d68e323">User profile attributes</h2>
+<div class="body conbody"><p class="shortdesc">The profile returned to your application is a JSON object
+that contains a number of attributes. Here are two example profiles,
+followed by an explanation of each attribute.</p>
+<p>Here is an example profile that is built when a user authenticates
+at the Single Sign On service by using the Facebook Identity Provider
+(IDP):</p>
+<pre class="codeblock"><div class="codeAreaWrapper"><div id="codeCopyImgId6" class="codeCopyImg" style="display: none;"></div><code class=" hljs json">{
+    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value">[<span class="hljs-string">"Smith"</span>]</span>,
+    "<span class="hljs-attribute">username</span>": <span class="hljs-value"><span class="hljs-string">"http:\/\/www.facebook.com\/1234567890"</span></span>,
+    "<span class="hljs-attribute">userUniqueID</span>": <span class="hljs-value">[<span class="hljs-string">"http:\/\/www.facebook.com\/1234567890"</span>]</span>,
+    "<span class="hljs-attribute">AUTHENTICATION_LEVEL</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value">[<span class="hljs-string">"johnsmith@somwhere.com"</span>]</span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value">[<span class="hljs-string">"John Smith"</span>]</span>,
+    "<span class="hljs-attribute">AZN_CRED_CREATE_TIME</span>": <span class="hljs-value"><span class="hljs-string">"2014-09-24T02:27:26Z"</span></span>,
+    "<span class="hljs-attribute">userRealm</span>": <span class="hljs-value"><span class="hljs-string">"www.facebook.com"</span></span>,
+    "<span class="hljs-attribute">userDisplayName</span>": <span class="hljs-value">[<span class="hljs-string">"johnsmith@somewhere.com"</span>]</span>,
+    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value">[<span class="hljs-string">"John"</span>]</span>,
+    "<span class="hljs-attribute">requestedAuthnPolicy</span>": <span class="hljs-value"><span class="hljs-string">"http:\/\/www.ibm.com\/idaas\/authnpolicy\/basic\/verified_email"</span></span>,
+    "<span class="hljs-attribute">idaas.verified_email</span>": <span class="hljs-value">[<span class="hljs-string">"johnsmith@somewhere.com"</span>]
+</span>}</code></div></pre>
+<p>Here is an example profile that is built when a user authenticates
+at the Single Sign On service by using the IBM IDP:</p>
+<pre class="codeblock"><div class="codeAreaWrapper"><div id="codeCopyImgId7" class="codeCopyImg" style="display: none;"></div><code class=" hljs json">{
+    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value">[<span class="hljs-string">"SMITH"</span>]</span>,
+    "<span class="hljs-attribute">username</span>": <span class="hljs-value"><span class="hljs-string">"http:\/\/www.ibm.com\/johnsmith@somewhere.com"</span></span>,
+    "<span class="hljs-attribute">userUniqueID</span>": <span class="hljs-value">[<span class="hljs-string">"http:\/\/www.ibm.com\/110000Z99Z"</span>]</span>,
+    "<span class="hljs-attribute">AUTHENTICATION_LEVEL</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,
+    "<span class="hljs-attribute">email</span>": <span class="hljs-value">[<span class="hljs-string">"johnsmith@somewhere.com"</span>]</span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value">[<span class="hljs-string">"JOHN SMITH"</span>]</span>,
+    "<span class="hljs-attribute">AZN_CRED_CREATE_TIME</span>": <span class="hljs-value"><span class="hljs-string">"2014-09-24T02:39:13Z"</span></span>,
+    "<span class="hljs-attribute">userRealm</span>": <span class="hljs-value"><span class="hljs-string">"www.ibm.com"</span></span>,
+    "<span class="hljs-attribute">userDisplayName</span>": <span class="hljs-value">[<span class="hljs-string">"johnsmith@somewhere.com"</span>]</span>,
+    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value">[<span class="hljs-string">"JOHN"</span>]</span>,
+    "<span class="hljs-attribute">requestedAuthnPolicy</span>": <span class="hljs-value"><span class="hljs-string">"http:\/\/www.ibm.com\/idaas\/authnpolicy\/basic\/verified_email"</span></span>,
+    "<span class="hljs-attribute">idaas.verified_email</span>": <span class="hljs-value">[<span class="hljs-string">"johnsmith@somewhere.com"</span>]
+</span>}</code></div></pre>
+<p>The following table describes the profile attributes.</p>
+<div class="tablenoborder"><table id="user_profile_attributes__table_qcm_bjx_np"><caption><span class="tablecap">Table 3. Profile attributes</span></caption><thead><tr><th id="d68e348">Attribute</th>
+<th id="d68e350">Description</th>
+</tr>
+</thead>
+<tbody><tr><td headers="d68e348 ">lastName</td>
+<td headers="d68e350 ">An array that typically contains 0 or 1 values. Values come
+from a "last name" attribute as provided in a profile that is read
+from the real IDP that the user logged in from. This attribute is
+not verified by the Single Sign On service. Use this attribute for
+display purposes only.</td>
+</tr>
+<tr><td headers="d68e348 ">firstName</td>
+<td headers="d68e350 ">An array that typically contains 0 or 1 values. Values come
+from a "first name" attribute, as provided in a profile that is read
+from the real IDP that the user logged in from. This attribute is
+not verified by the Single Sign On service. Use this attribute for
+display purposes only.</td>
+</tr>
+<tr><td headers="d68e348 ">username</td>
+<td headers="d68e350 ">Consists of some static text, and 2 variable portions, following
+the pattern:<p>http://<var class="keyword varname">&lt;realm_identifier&gt;</var>/<var class="keyword varname">&lt;user_identifier&gt;</var></p>
+<p> The <var class="keyword varname">&lt;realm_identifier&gt;</var> 
+is the same as userRealm, and represents the IDP where the user logged
+in.</p>
+<p> The <var class="keyword varname">&lt;user_identifier&gt;</var> is an identifier
+of the user that is provided by the real IDP where the user logged
+in. The identifier is expected to be unique for each user within that
+IDP.</p>
+<p> For IDPs other than IBM, the username attribute is the
+same as the userUniqueID. For IBM, the <var class="keyword varname">&lt;user_identifier&gt;</var> portion
+is the user's userDisplayName, which is unique for all IBM accounts.</p>
+ Do
+not use this attribute for indexing user-specific data at your consuming
+application. Instead, use the userUniqueID.</td>
+</tr>
+<tr><td headers="d68e348 ">name</td>
+<td headers="d68e350 ">An array that typically contains 0 or 1 values. Values come
+from a "name" attribute as provided in a profile that is read from
+the real IDP that the user logged in from. This attribute is not verified
+by the Single Sign On service. Use this attribute for display purposes
+only.</td>
+</tr>
+<tr><td headers="d68e348 ">userDisplayName</td>
+<td headers="d68e350 ">An array that typically contains 1 value and is the username
+that the user normally sees at the IDP itself where they logged in.
+For most social providers, this value is also their email address.
+For the IBM provider, this value  is the login username. This attribute
+is not verified by the Single Sign On service. Use this attribute
+for display purposes only.</td>
+</tr>
+<tr><td headers="d68e348 ">userRealm</td>
+<td headers="d68e350 ">One of the following values, which represent the IDP where
+the user logged in:<pre class="pre"><div class="codeAreaWrapper"><div id="codeCopyImgId8" class="codeCopyImg"></div><code class=" hljs ">www.ibm.com
+www.google.com
+www.facebook.com
+www.linkedin.com</code></div></pre>
+</td>
+</tr>
+<tr><td headers="d68e348 ">userUniqueID</td>
+<td headers="d68e350 ">An array that contains 1 value. This value contains some static
+text, and 2 variable portions, following the pattern:<p>http://<var class="keyword varname">&lt;realm_identifier&gt;</var>/<var class="keyword varname">&lt;user_identifier&gt;</var></p>
+<p>The <var class="keyword varname">&lt;realm_identifier&gt;</var> is
+ the same as userRealm, and represents the IDP that the user logged
+in from. </p>
+<p>The <var class="keyword varname">&lt;user_identifier&gt;</var> is a unique,
+non-recycled identifier of the user, provided by the real IDP where
+the user logged in.</p>
+<p>If you store user-specific data at your
+own application, this attribute's value is suitable for use as an
+index for that data.</p>
+</td>
+</tr>
+<tr><td headers="d68e348 ">email</td>
+<td headers="d68e350 ">An array that typically contains 1 or more values. The values
+come directly from a profile that was read from the real IDP where
+the user logged in. This attribute is not verified by the Single Sign
+On service.  If you choose to use this attribute, verify the values
+in your own application.</td>
+</tr>
+<tr><td headers="d68e348 ">idaas.verified_email</td>
+<td headers="d68e350 ">This attribute is only available if the user has,
+at some time, interacted with the Single Sign On Service to complete
+independent email address verification using a standard email/nonce
+verification process. For example, if your application uses the <span class="ph filepath">http://www.ibm.com/idaas/authnpolicy/basic/verified_email</span> authentication
+policy, then this attribute is returned. When the Single Sign On service
+verifies email address information, it typically starts with the value
+of the "email" attribute from the authenticating IDP and verifies
+through use of a one-time-password email. </td>
+</tr>
+<tr><td headers="d68e348 ">requestedAuthnPolicy</td>
+<td headers="d68e350 ">This attribute specifies the authentication policy that Single
+Sign On service  enforces when it authenticates the user, if the consuming
+application requests an authentication policy.  This attribute is
+important because when your application initially redirects to the
+Single Sign On service's <span class="ph filepath">/authorize</span> endpoint,
+a malicious user might change the requested policy in the redirect.
+If your application requests an authentication policy, ensure that
+you verify that this attribute is returned in the profile, and represents
+the authentication policy your application originally asked for. If
+the attribute is missing or does not match what you requested, do
+not create a session for the user. Instead, redirect for authorization
+again or display an error.</td>
+</tr>
+<tr><td headers="d68e348 ">AUTHENTICATION_LEVEL</td>
+<td headers="d68e350 ">Represents the authentication level of the user credential
+at the Single Sign On service. Supported levels: <ul><li>1 - Used only at the Single Sign On service for "identity that
+is known, but not fully authenticated" purposes, particularly during
+reauthentication operations. This level is never presented to a consuming
+application.</li>
+<li>2 - User was authenticated by the regular process at the IDP represented
+by the userRealm.</li>
+<li>3 - User completed one-time-password authentication on this session.</li>
+<li>4 - User was prompted for optional browser registration. This
+action is typical for the "standard" authentication policy when the
+user is not using a previously registered browser. This level does
+not mean that the user necessarily registered their browser, only
+that they were given the option to.</li>
+</ul>
+</td>
+</tr>
+<tr><td headers="d68e348 ">AZN_CRED_CREATE_TIME</td>
+<td headers="d68e350 ">Represents a time stamp of when the user most recently authenticated
+or reauthenticated to the Single Sign On service. You can use the
+value to determine authentication freshness for implementing application
+reauthentication policies.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</article><article class="topic concept nested1" aria-labelledby="d68e475" lang="en-us" id="ssogs_005"><h2 class="topictitle2" id="d68e475">User self service for Single Sign On</h2>
+<div class="body conbody"><p class="shortdesc"></p>
+<p>The Single Sign On capability provides interfaces that your users
+can access to manage configuration and information that is specific
+to their use of the application. This user-directed management is
+called user self service for Single Sign On.</p>
+<p>The Single Sign On capability provides a self service home page.
+From this page, users can access each of the user self service actions.
+Optionally, you can also point users directly to each web page.</p>
+<div class="tablenoborder"><table><caption><span class="tablecap">Table 4. User self service interfaces</span></caption><thead><tr><th id="d68e496">Interface</th>
+<th id="d68e498">URL</th>
+<th id="d68e500">Description</th>
+</tr>
+</thead>
+<tbody><tr><td headers="d68e496 ">Self service home</td>
+<td headers="d68e498 ">https://idaas.<span class="ph"><span class="keyword" data-hd-audience="yellow">ng.bluemix.net</span></span>/idaas/index.jsp</td>
+<td headers="d68e500 ">Entry point for user self service operations.</td>
+</tr>
+<tr><td headers="d68e496 ">Manage OAuth consent decisions</td>
+<td headers="d68e498 ">https://idaas.<span class="ph"><span class="keyword" data-hd-audience="yellow">ng.bluemix.net</span></span>/idaas/protected/oauthtrustedclients.jsp</td>
+<td headers="d68e500 ">Allows a user to clear the settings for
+persisted OAuth consent decisions. On subsequent uses of an application,
+the user is re-prompted for consent.</td>
+</tr>
+<tr><td headers="d68e496 ">View profile attributes</td>
+<td headers="d68e498 ">https://idaas.<span class="ph"><span class="keyword" data-hd-audience="yellow">ng.bluemix.net</span></span>/idaas/protected/viewprofile.jsp</td>
+<td headers="d68e500 ">Allows a user to view (read-only) attributes
+known to the Single Sign On service about the user. These are a combination
+of attributes from the identity provider the user authenticated with,
+and verified attributes managed by the Single Sign On service.</td>
+</tr>
+<tr><td headers="d68e496 ">Manage devices</td>
+<td headers="d68e498 ">https://idaas.<span class="ph"><span class="keyword" data-hd-audience="yellow">ng.bluemix.net</span></span>/idaas/protected/managedevices.jsp</td>
+<td headers="d68e500 ">Allows a user to view and remove registered
+browsers. This is applicable for users of applications using the http://www.ibm.com/idaas/authnpolicy/standard
+authentication policy.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</article></article></article></main></div></div>
+	<div data-dojo-attach-point="detailFooterDiv" class="detailFooterDiv" id="docUI/views/DetailPageFooter_1" widgetid="docUI/views/DetailPageFooter_1">	
+	<div class="detailFooterContentDiv">
+		<a data-dojo-attach-point="tremsOfUseDiv" href="https://www.ng.bluemix.net/docs/#navigation/notices.html#terms">Terms of use</a><span data-dojo-attach-point="tremsOfUseDivSeparator">/</span>
+		<a data-dojo-attach-point="noticesDiv" href="https://www.ng.bluemix.net/docs/#navigation/notices.html">Notices</a>
+	</div>
+</div>
+</div>
+				</div></div>
+				<div role="tabpanel" class="dijitStackContainerChildWrapper dijitHidden" aria-label="searchPage"><div id="searchPage" data-dojo-type="docUI/widgets/ContentPane" data-dojo-props="title:&quot;searchPage&quot;" class="dijitContentPane dijitStackContainer-child dijitStackContainer-dijitContentPane" widgetid="searchPage" title="">
+					<div id="docUISearchDiv"> </div>
+				</div></div>
+				<div role="tabpanel" class="dijitStackContainerChildWrapper dijitHidden" aria-label="errorPage"><div id="errorPage" data-dojo-type="docUI/widgets/ContentPane" data-dojo-props="title:&quot;errorPage&quot;" class="dijitContentPane dijitStackContainer-child dijitStackContainer-dijitContentPane" widgetid="errorPage" title="">
+					<div id="docUIErrorDiv"> </div>
+				</div></div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<span class="topIcon" id="topIcon">
+		<div class="topIconImg">&nbsp;</div>
+	</span>
+   
+ 	<script type="text/javascript" src="./Getting started with Single Sign On_files/eluminate.js"></script>
+	<script type="text/javascript">
+		cmSetClientID("50200034|BLUEMIX", true,"data.coremetrics.com","ibmdw.net");
+ 		cmSetupCookieMigration(true,true,".bluemix.net");
+		cmCreatePageviewTag(document.title,"BLUEMIX");
+	</script>
+
+
+
+<iframe id="dojo_request_iframe_IoIframe" name="dojo_request_iframe_IoIframe" src="./Getting started with Single Sign On_files/login.html" onload="dojo_request_iframe_onload();" style="position: absolute; left: 1px; top: 1px; height: 1px; width: 1px; visibility: hidden"></iframe><div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" style="position: absolute; left: 0px; top: -9999px; width: 1px; height: 1px; z-index: 999999999;"><object id="global-zeroclipboard-flash-bridge" name="global-zeroclipboard-flash-bridge" width="100%" height="100%" type="application/x-shockwave-flash" data="https://www.ng.bluemix.net/docs/lib/docUI/externalLib/ZeroClipboard/ZeroClipboard.swf?noCache=1415544091439"><param name="allowScriptAccess" value="sameDomain"><param name="allowNetworking" value="all"><param name="menu" value="false"><param name="wmode" value="transparent"><param name="flashvars" value="trustedOrigins=www.ng.bluemix.net%2C%2F%2Fwww.ng.bluemix.net%2Chttps%3A%2F%2Fwww.ng.bluemix.net&amp;swfObjectId=global-zeroclipboard-flash-bridge"></object></div></body></html>
